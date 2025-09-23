@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Willy Wonka — Magical Factory</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <div class="bubbles">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="logo-circle">W</div>
+          <span>Wonka Factory</span>
+        </div>
+        <div class="menu">
+          <a href="#" class="active">Home</a>
+          <a href="index.html">About</a>
+          <a href="shop.html">Shop</a>
+          <a href="movies.html">Movies</a>
+          <a href="#registerForm">Apply</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>Welcome to Willy Wonka’s Magical World</h2>
+        <p>Chocolate, gold and starlight. A factory where magic and luxury meet in every detail.</p>
+        <a href="#shop" class="btn">Visit Shop</a>
+
+        <div class="ticket">
+          <img src="gt.png" alt="Golden Ticket"/>
+        </div>
+      </div>
+      <div>
+        <img src="wonka.png" alt="Chocolate"/>
+      </div>
+    </section>
+
+    <section id="about" class="grid">
+      <div>
+        <h3>About the Factory</h3>
+        <p style="margin:10px 0">Our factory is about textures, aromas, and shimmering magic. The spell of chocolate in every corner.</p>
+        <div class="cards">
+          <div class="card"><h3>Recipes</h3><p>Rare cocoa beans and enchanted fillings.</p></div>
+          <div class="card"><h3>Tickets</h3><p>Limited golden tickets glowing with charm.</p></div>
+          <div class="card"><h3>Tastings</h3><p>Personal magical journeys for connoisseurs.</p></div>
+          <div class="card"><h3>Packaging</h3><p>Magnificent design with stardust details.</p></div>
+        </div>
+      </div>
+      <aside id="shop" class="shop">
+        <h3>Shop</h3>
+        <div class="product">
+          <img src="milkchoco.png" alt="Truffle"/>
+          <div>
+            <strong>Premium milk chocolate Wonka</strong>
+            <div class="price">$12</div>
+          </div>
+        </div>
+        <div class="product">
+          <img src="silver.png" alt="Ticket"/>
+          <div>
+            <strong>Silver Lightning</strong>
+            <div class="price">$19</div>
+          </div>
+        </div>
+        <div class="product">
+          <img src="bignightout.png" alt="Bar"/>
+          <div>
+            <strong>Big night out</strong>
+            <div class="price">$9</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+    <br>
+    <div class="container2">
+    <h2>Golden Ticket Form </h2>
+    <form id="registerForm">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" required>
+
+      <label for="passport">Ticket Number:</label>
+      <input type="text" id="passport"  required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="test_date">Date:</label>
+      <input type="date" id="test_date">
+
+      <label for="city">Your City:</label>
+      <select id="city" name="city" required>
+        <option value="Almaty">Almaty</option>
+        <option value="Astana">Astana</option>
+        <option value="Shymkent">Shymkent</option>
+        <option value="Aktobe">Aktobe</option>
+        <option value="Aktau">Aktau</option>
+        <option value="Atyrau">Atyrau</option>
+        <option value="Pavlodar">Pavlodar</option>
+        <option value="Semey">Semey</option>
+        <option value="Oral">Oral</option>
+        <option value="Turkistan">Turkistan</option>
+        <option value="Oskemen">Oskemen</option>
+      </select>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+  </main>
+  <footer>
+    © Willy Wonka Factory — demo site, no real payments
+  </footer>
+</body>
+</html>

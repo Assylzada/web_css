@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Willy Wonka's Chocolates — Shop</title>
+  <meta name="description" content="Willy Wonka's Chocolates — magical handcrafted chocolates. Pure CSS, no JavaScript." />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <aside class="sidebar" aria-label="sidebar">
+      <div class="brand">
+        <div class="logo">W</div>
+        <div>
+          <div class="site-name">Wonka's Chocolates</div>
+          <div class="site-sub">Handcrafted happiness</div>
+        </div>
+      </div>
+      <nav>
+        <a href="willy.html" class="active">Home</a>
+        <a href="index.html">About</a>
+        <a href="shop.html">Shop</a>
+        <a href="movies.html">Movies</a>
+      </nav>
+
+      <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.6)">
+        <strong>Open hours</strong>
+        <div style="margin-top:6px">Every day — 9:00 — 21:00</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero">
+        <div class="hero-left">
+          <div class="title">Welcome to Willy Wonka's Chocolates</div>
+          <div class="lead">Magical, small-batch chocolates — lovingly crafted. Pure CSS, lightweight and accessible.</div>
+
+          <div class="grid" id="shop">
+            <!-- Product 1 -->
+            <article class="card">
+              <img src="silver.png" alt="FizzBerry Bar" style="width:100%;border-radius:8px;box-shadow:0 0 15px rgba(0,0,0,0.2)"/>
+              <div class="meta">
+                <div class="name">Silver Lightning</div>
+                <div class="price">$12</div>
+              </div>
+              <p class="desc">Rich dark chocolate with a liquid caramel heart infused with sea salt.</p>
+              <form action="#checkout" method="get">
+                <input type="hidden" name="product" value="golden-truffle" />
+                <button class="btn-primary">Buy — $12</button>
+              </form>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="card">
+              <img src="bignightout.png" alt="FizzBerry Bar" style="width:100%;border-radius:8px;box-shadow:0 0 15px rgba(0,0,0,0.2)"/>
+              <div class="meta">
+                <div class="name">Big night out candy</div>
+                <div class="price">$9</div>
+              </div>
+              <p class="desc">Milk chocolate studded with popping candy and freeze-dried raspberries.</p>
+              <form action="#checkout" method="get">
+                <input type="hidden" name="product" value="fizzberry-bar" />
+                <button class="btn-primary">Buy — $9</button>
+              </form>
+            </article>
+
+            <!-- Product 3 -->
+            <article class="card">
+              <img src="milkchoco.png" alt="FizzBerry Bar" style="width:100%;border-radius:8px;box-shadow:0 0 15px rgba(0,0,0,0.2)"/>
+              <div class="meta">
+                <div class="name">Wonka Cocoa Box</div>
+                <div class="price">$26</div>
+              </div>
+              <p class="desc">A bar of chocolate — espresso, hazelnut, orange blossom and more.</p>
+              <form action="#checkout" method="get">
+                <input type="hidden" name="product" value="velvet-cocoa-box" />
+                <button class="btn-primary">Buy — $26</button>
+              </form>
+            </article>
+          </div>
+
+          <!-- Checkout -->
+          <section id="checkout" class="checkout" aria-label="checkout">
+            <h3>Order & Checkout</h3>
+            <p style="color:rgba(255,255,255,0.6);font-size:13px">This form submits order data to your server. Replace the action with your back-end endpoint.</p>
+            <form action="/create-order" method="post">
+              <div class="field">
+                <input name="name" placeholder="Full name" required />
+                <input name="email" placeholder="Email address" required />
+              </div>
+              <div class="field">
+                <input name="product" placeholder="Product (e.g. golden-truffle)" required />
+                <input name="quantity" type="number" min="1" value="1" required />
+              </div>
+              <div class="field">
+                <input name="address" placeholder="Shipping address" required />
+              </div>
+              <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+                <button class="btn-primary" type="submit">Place order</button>
+                <div style="font-size:13px;color:rgba(255,255,255,0.6)">Or contact us at <strong>orders@wonka.example</strong></div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <aside style="width:320px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);">
+          <img src="wonka.png" alt="Chocolate" style="width:100%;border-radius:50%;box-shadow:0 0 20px rgba(0,0,0,0.2)"/>
+          <br><br>
+          <h4>Best sellers</h4>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);">Velvet Cocoa Box — $26</div>
+            <div style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);">Golden Truffle — $12</div>
+            <div style="padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);">FizzBerry Bar — $9</div>
+          </div>
+          <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.6)">Free local pickup on orders over $40.</div>
+        </aside>
+      </section>
+
+      <footer>
+        © Willy Wonka's Chocolates — handcrafted with a little magic
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

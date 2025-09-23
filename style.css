@@ -1,0 +1,176 @@
+/* --------- Variables --------- */
+  :root{
+    --bg-1: #1b002b;
+    --bg-2: #37004d;
+    --glass: rgba(255,255,255,0.06);
+    --accent: #ffd54a;
+    --muted: rgba(255,255,255,0.8);
+    --card: rgba(255,255,255,0.04);
+    --radius: 18px;
+    --transition: 300ms cubic-bezier(.22,.9,.3,1);
+  }
+
+  /* Reset */
+  *{
+    box-sizing:border-box
+  }
+  html,body{
+    height:100%
+  }
+  body{
+    margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    background: radial-gradient(1200px 600px at 10% 10%, #23002f 0%, transparent 10%),
+                radial-gradient(1000px 500px at 90% 90%, #2a0040 0%, transparent 10%),
+                linear-gradient(135deg,var(--bg-1),var(--bg-2));
+    color:var(--muted); -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale; padding:48px;
+  }
+
+  /* Layout */
+  .wrap{
+    max-width:1200px;margin:0 auto;display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start
+  }
+
+  /* Sidebar */
+  .sidebar{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:var(--radius);padding:22px;backdrop-filter: blur(6px);box-shadow:0 8px 30px rgba(0,0,0,0.5);
+  }
+  .brand{
+    display:flex;align-items:center;gap:14px;margin-bottom:18px
+  }
+  .logo{
+    width:48px;height:48px;border-radius:12px;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,#ff7ab6,#ffde7a);color:#230022
+  }
+  .site-name{
+    font-size:15px;font-weight:700
+  }
+  .site-sub{
+    font-size:12px;color:rgba(255,255,255,0.6)
+  }
+  nav a{
+    display:block;padding:10px 12px;border-radius:12px;color:var(--muted);text-decoration:none;margin:6px 0;font-weight:600
+  }
+  nav a:hover, nav a:focus{
+    background:rgba(255,255,255,0.03);transform:translateX(6px);transition:var(--transition)
+  }
+
+  /* Hero */
+  .main{
+    min-height:600px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;
+  }
+  .hero{
+    display:flex;gap:24px;align-items:center
+  }
+  .hero-left{
+    flex:1
+  }
+  .title{
+    font-size:34px;font-weight:800;line-height:1;color:linear-gradient(#fff,#ffd);background:linear-gradient(90deg,#fff,#ffd54a);-webkit-background-clip:text;background-clip:text;color:transparent
+  }
+  .lead{
+    margin-top:8px;color:rgba(255,255,255,0.8);font-size:15px
+  }
+
+  /* Floating candies (pure CSS shapes) */
+  .candy-field{
+    position:absolute;inset:0;pointer-events:none
+  }
+  .candy{
+    position:absolute;width:36px;height:36px;border-radius:10px;opacity:0.95;mix-blend-mode:screen;animation:float 10s linear infinite;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.5))
+  }
+  .candy:before{
+    content:"";display:block;width:100%;height:100%;border-radius:10px;background:linear-gradient(135deg,#ff9fe6,#ffd36f);transform:rotate(12deg)
+  }
+  .candy.x2{
+    transform:scale(1.5);animation-duration:14s
+  }
+  .candy.x3{
+    transform:scale(0.9);animation-duration:8s
+  }
+  @keyframes 
+  float{
+    0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-40px) rotate(18deg)}100%{transform:translateY(0) rotate(0)}
+  }
+
+  /* Product grid */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:22px
+  }
+  .card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(4px);transition:transform var(--transition), box-shadow var(--transition)
+  }
+  .card:hover{
+    transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.5)
+  }
+
+  .meta{
+    display:flex;justify-content:space-between;align-items:center;margin-top:10px
+  }
+  .name{
+    font-weight:700
+  }
+  .price{
+    font-weight:800;color:var(--accent)
+  }
+
+  /* CSS-only modal using checkbox hack */
+  .quickview{
+    position:relative
+  }
+  input[type=checkbox]{
+    display:none
+  }
+  .qv-label{display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));cursor:pointer;font-weight:700}
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:grid;place-items:center;opacity:0;pointer-events:none;transition:var(--transition)}
+  input[type=checkbox]:checked ~ .overlay{opacity:1;pointer-events:auto}
+  .modal{width:min(760px,94%);background:linear-gradient(180deg,#120018,#23002f);border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.04)}
+  .modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .modal .thumb{height:220px}
+  .close{display:inline-block;margin-top:12px;padding:8px 12px;border-radius:10px;background:rgba(255,255,255,0.03);text-decoration:none}
+
+  /* Checkout form (anchor target) */
+  .checkout{
+    margin-top:26px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)
+  }
+  .field{
+    display:flex;gap:8px;margin-top:10px
+  }
+  .field input, .field textarea, .field select{
+    flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)
+  }
+  .btn-primary{
+    display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,#ffcf6b,#ff8fc2);color:#1a0025;font-weight:800;border:none;cursor:pointer
+  }
+
+  /* Footer */
+  footer{
+    margin-top:22px;text-align:center;color:rgba(255,255,255,0.5);font-size:13px
+  }
+  .checkout input, .checkout textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+.checkout button {
+  background: #ffcc33;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkout button:hover {
+  background: #ffaa00;
+}
+
+
+  /* Responsive */
+  @media (max-width:900px){.wrap{grid-template-columns:1fr; padding-bottom:40px}.sidebar{order:2}.main{order:1}}
