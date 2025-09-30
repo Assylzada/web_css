@@ -39,7 +39,6 @@
         <h2>Welcome to Willy Wonka’s Magical World</h2>
         <p>Chocolate, gold and starlight. A factory where magic and luxury meet in every detail.</p>
         <a href="#shop" class="btn">Visit Shop</a>
-
         <div class="ticket">
           <img src="gt.png" alt="Golden Ticket"/>
         </div>
@@ -52,74 +51,111 @@
     <section id="about" class="grid">
       <div>
         <h3>About the Factory</h3>
-        <p style="margin:10px 0">Our factory is about textures, aromas, and shimmering magic. The spell of chocolate in every corner.</p>
+        <p style="margin:10px 0">
+          Our factory is about textures, aromas, and shimmering magic. 
+          The spell of chocolate in every corner.
+        </p>
         <div class="cards">
-          <div class="card"><h3>Recipes</h3><p>Rare cocoa beans and enchanted fillings.</p></div>
-          <div class="card"><h3>Tickets</h3><p>Limited golden tickets glowing with charm.</p></div>
-          <div class="card"><h3>Tastings</h3><p>Personal magical journeys for connoisseurs.</p></div>
-          <div class="card"><h3>Packaging</h3><p>Magnificent design with stardust details.</p></div>
+          <div class="card">
+            <img src="rec.png" width="150" alt="Recipes">
+            <h3>Recipes</h3>
+            <p>Rare cocoa beans and enchanted fillings.</p>
+            <a href="#recipes"><button>Recipes</button></a>
+          </div>
+          <div class="card">
+            <img src="golden.png" width="150" alt="Tickets">
+            <h3>Tickets</h3>
+            <p>Limited golden tickets glowing with charm.</p>
+            <a href="#tickets"><button>Register</button></a>
+          </div>
+          <div class="card">
+            <img src="test.png" width="150" alt="Tastings">
+            <h3>Tastings</h3>
+            <p>Personal magical journeys for connoisseurs.</p>
+            <a href="#tastings"><button>Shop</button></a>
+          </div>
+          <div class="card">
+            <img src="pack.png" width="150" alt="Packaging">
+            <h3>Packaging</h3>
+            <p>Magnificent design with stardust details.</p>
+            <a href="#factory"><button>Factory</button></a>
+          </div>
         </div>
       </div>
       <aside id="shop" class="shop">
-        <h3>Shop</h3>
-        <div class="product">
-          <img src="milkchoco.png" alt="Truffle"/>
-          <div>
-            <strong>Premium milk chocolate Wonka</strong>
-            <div class="price">$12</div>
-          </div>
+      <h3>Shop</h3>
+      <div class="product">
+        <img src="milkchoco.png" alt="Truffle"/>
+        <div>
+          <strong>Premium milk chocolate Wonka</strong>
+          <div class="price">$12</div>
         </div>
-        <div class="product">
-          <img src="silver.png" alt="Ticket"/>
-          <div>
-            <strong>Silver Lightning</strong>
-            <div class="price">$19</div>
-          </div>
+      </div>
+      <div class="product">
+        <img src="silver.png" alt="Ticket"/>
+        <div>
+          <strong>Silver Lightning</strong>
+          <div class="price">$19</div>
         </div>
-        <div class="product">
-          <img src="bignightout.png" alt="Bar"/>
-          <div>
-            <strong>Big night out</strong>
-            <div class="price">$9</div>
-          </div>
+      </div>
+      <div class="product">
+        <img src="bignightout.png" alt="Bar"/>
+        <div>
+          <strong>Big night out</strong>
+          <div class="price">$9</div>
         </div>
-      </aside>
+      </div>
+    </aside>
     </section>
-    <br>
+
+    <section id="gallery" class="gallery-section">
+      <h2>Magic Moments Gallery</h2>
+      <div class="gallery">
+        <div class="gallery-item"><img src="bignightout.png" alt=""><div class="caption">Big Night Out</div></div>
+        <div class="gallery-item"><img src="silver.png" alt=""><div class="caption">Silver Lightning</div></div>
+        <div class="gallery-item"><img src="fourty.png" alt=""><div class="caption">Forty Second Sweet</div></div>
+        <div class="gallery-item"><img src="giraffe.png" alt=""><div class="caption">Macaroon</div></div>
+        <div class="gallery-item"><img src="mint.png" alt=""><div class="caption">Mint Bar</div></div>
+        <div class="gallery-item"><img src="hair.png" alt=""><div class="caption">Hair Repair Eclair</div></div>
+        <div class="gallery-item"><img src="wonk.png" alt=""><div class="caption">Wonka</div></div>
+        <div class="gallery-item"><img src="bar.png" alt=""><div class="caption">Wonka Bar</div></div>
+        <div class="gallery-item"><img src="cup.png" alt=""><div class="caption">Cupcakes</div></div>
+        <div class="gallery-item"><img src="cake.png" alt=""><div class="caption">Chocolate cake</div></div>
+        <div class="gallery-item"><img src="cookies.png" alt=""><div class="caption">Cookies</div></div>
+        <div class="gallery-item"><img src="cake2.png" alt=""><div class="caption">White chocolate cake</div></div>
+      </div>
+    </section>
+<br>
     <div class="container2">
-    <h2>Golden Ticket Form </h2>
-    <form id="registerForm">
-      <label for="fullName">Full Name:</label>
-      <input type="text" id="fullName" required>
-
-      <label for="passport">Ticket Number:</label>
-      <input type="text" id="passport"  required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
-
-      <label for="test_date">Date:</label>
-      <input type="date" id="test_date">
-
-      <label for="city">Your City:</label>
-      <select id="city" name="city" required>
-        <option value="Almaty">Almaty</option>
-        <option value="Astana">Astana</option>
-        <option value="Shymkent">Shymkent</option>
-        <option value="Aktobe">Aktobe</option>
-        <option value="Aktau">Aktau</option>
-        <option value="Atyrau">Atyrau</option>
-        <option value="Pavlodar">Pavlodar</option>
-        <option value="Semey">Semey</option>
-        <option value="Oral">Oral</option>
-        <option value="Turkistan">Turkistan</option>
-        <option value="Oskemen">Oskemen</option>
-      </select>
-
-      <button type="submit">Register</button>
-    </form>
-  </div>
+      <h2>Golden Ticket Form</h2>
+      <form id="registerForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" required>
+        <label for="passport">Ticket Number:</label>
+        <input type="text" id="passport"  required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <label for="test_date">Date:</label>
+        <input type="date" id="test_date">
+        <label for="city">Your City:</label>
+        <select id="city" name="city" required>
+          <option value="Almaty">Almaty</option>
+          <option value="Astana">Astana</option>
+          <option value="Shymkent">Shymkent</option>
+          <option value="Aktobe">Aktobe</option>
+          <option value="Aktau">Aktau</option>
+          <option value="Atyrau">Atyrau</option>
+          <option value="Pavlodar">Pavlodar</option>
+          <option value="Semey">Semey</option>
+          <option value="Oral">Oral</option>
+          <option value="Turkistan">Turkistan</option>
+          <option value="Oskemen">Oskemen</option>
+        </select>
+        <button type="submit">Register</button>
+      </form>
+    </div>
   </main>
+
   <footer>
     © Willy Wonka Factory — demo site, no real payments
   </footer>
