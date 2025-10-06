@@ -147,7 +147,6 @@ aside ul li a:hover { background: rgba(0,0,0,0.1); }
 
 .carousel-indicators [data-bs-target] { background-color: #ffd94d; }
 
-> assylay:
 .pure-cards { display: grid; gap: 1rem; }
 @media (max-width: 575.98px) { .pure-cards { grid-template-columns: 1fr; } }
 @media (min-width: 576px) and (max-width: 991.98px) { .pure-cards { grid-template-columns: repeat(2, 1fr); } }
