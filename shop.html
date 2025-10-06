@@ -2,144 +2,161 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Willy Wonka's Chocolates — Shop</title>
-  <meta name="description" content="Willy Wonka's Chocolates — magical handcrafted chocolates. Pure CSS, no JavaScript." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Willy Wonka's Chocolates — Magical Shop</title>
+  <meta name="description" content="Willy Wonka's Chocolates — magical handcrafted chocolates." />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Task 1: Navigation Bar (Flexbox) -->
-  <header class="navbar">
-    <div class="nav-logo">W</div>
-    <nav class="nav-links">
-      <a href="willy.html" class="active">Home</a>
-      <a href="index.html">About</a>
-      <a href="shop.html">Shop</a>
-      <a href="movies.html">Movies</a>
-    </nav>
-  </header>
+  <!-- Task 5: Bootstrap Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-gradient" style="background:linear-gradient(90deg,#1b002b,#37004d);">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-warning" href="#">W</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="willy.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Task 3: Page Layout with Grid -->
-  <div class="wrap">
-    <aside class="sidebar" aria-label="sidebar">
-      <div class="brand">
-        <div>
-          <div class="site-name">Wonka's Chocolates</div>
-          <div class="site-sub">Handcrafted happiness</div>
+  <!-- Task 3: Bootstrap Grid Layout -->
+  <div class="container my-4">
+    <div class="row g-4">
+      <!-- Sidebar -->
+      <aside class="col-lg-3 bg-opacity rounded-4 p-4">
+        <h4 class="fw-bold text-warning">Wonka's Chocolates</h4>
+        <p class="text-white-50">Handcrafted happiness</p>
+        <div class="mt-3 small text-light">
+          <strong>Open hours</strong><br>
+          Every day — 9:00 — 21:00
         </div>
-      </div>
-      <div style="margin-top:14px;font-size:13px;color:rgba(255,255,255,0.6)">
-        <strong>Open hours</strong>
-        <div style="margin-top:6px">Every day — 9:00 — 21:00</div>
-      </div>
-    </aside>
+      </aside>
 
-    <main class="main">
-      <section class="hero">
-        <div class="hero-left">
-          <div class="title">Welcome to Willy Wonka's Chocolates</div>
-          <div class="lead">Magical, small-batch chocolates — lovingly crafted. Pure CSS, lightweight and accessible.</div>
+      <!-- Main Content -->
+      <main class="col-lg-9">
+        <section class="text-center mb-4">
+          <h1 class="display-5 title">Welcome to Willy Wonka's Chocolates</h1>
+          <p class="lead text-white-50">Magical, small-batch chocolates — lovingly crafted. Pure CSS meets Bootstrap.</p>
+        </section>
 
-          <!-- Task 2: Card Row (Flexbox) -->
-          <div class="cards-row" id="shop">
-            <!-- Product 1 -->
-            <article class="card">
-              <img src="silver.png" alt="FizzBerry Bar"/>
-              <div class="meta">
-                <div class="name">Silver Lightning</div>
-                <div class="price">$12</div>
+        <!-- Task 8: Bootstrap Cards -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+          <div class="col">
+            <div class="card h-100 bg-transparent text-light border-light">
+              <img src="silver.png" class="card-img-top rounded-4" alt="Silver Lightning">
+              <div class="card-body">
+                <h5 class="card-title text-warning">Silver Lightning</h5>
+                <p class="card-text">Rich dark chocolate with caramel and sea salt.</p>
+                <p class="fw-bold">$12</p>
               </div>
-              <p class="desc">Rich dark chocolate with a liquid caramel heart infused with sea salt.</p>
-              <form action="#checkout" method="get">
-                <input type="hidden" name="product" value="golden-truffle" />
-                <button class="btn-primary">Buy — $12</button>
-              </form>
-            </article>
-
-            <!-- Product 2 -->
-            <article class="card">
-              <img src="bignightout.png" alt="FizzBerry Bar"/>
-              <div class="meta">
-                <div class="name">Big night out candy</div>
-                <div class="price">$9</div>
+              <div class="card-footer bg-transparent border-0">
+                <button class="btn btn-outline-warning w-100">Buy — $12</button>
               </div>
-              <p class="desc">Milk chocolate studded with popping candy and freeze-dried raspberries.</p>
-              <form action="#checkout" method="get">
-                <input type="hidden" name="product" value="fizzberry-bar" />
-                <button class="btn-primary">Buy — $9</button>
-              </form>
-            </article>
-
-            <!-- Product 3 -->
-            <article class="card">
-              <img src="milkchoco.png" alt="FizzBerry Bar"/>
-              <div class="meta">
-                <div class="name">Wonka Cocoa Box</div>
-                <div class="price">$26</div>
-              </div>
-              <p class="desc">A bar of chocolate — espresso, hazelnut, orange blossom and more.</p>
-              <form action="#checkout" method="get">
-                <input type="hidden" name="product" value="velvet-cocoa-box" />
-                <button class="btn-primary">Buy — $26</button>
-              </form>
-            </article>
-          </div>
-
-          <!-- Task 4: Image Gallery (Grid) -->
-          <section id="gallery" class="gallery-section">
-            <h2>Magic Moments Gallery</h2>
-            <div class="gallery">
-              <div class="gallery-item"><img src="bignightout.png" alt=""><div class="caption">Big Night Out</div></div>
-              <div class="gallery-item"><img src="silver.png" alt=""><div class="caption">Silver Lightning</div></div>
-              <div class="gallery-item"><img src="fourty.png" alt=""><div class="caption">Forty Second Sweet</div></div>
-              <div class="gallery-item"><img src="giraffe.png" alt=""><div class="caption">Macaroon</div></div>
-              <div class="gallery-item"><img src="mint.png" alt=""><div class="caption">Mint Bar</div></div>
-              <div class="gallery-item"><img src="hair.png" alt=""><div class="caption">Hair Repair Eclair</div></div>
-              <div class="gallery-item"><img src="wonk.png" alt=""><div class="caption">Wonka</div></div>
-              <div class="gallery-item"><img src="bar.png" alt=""><div class="caption">Wonka Bar</div></div>
-              <div class="gallery-item"><img src="cup.png" alt=""><div class="caption">Cupcakes</div></div>
             </div>
-          </section>
+          </div>
 
-          <!-- Checkout -->
-          <section id="checkout" class="checkout" aria-label="checkout">
-            <h3>Order & Checkout</h3>
-            <p style="color:rgba(255,255,255,0.6);font-size:13px">This form submits order data to your server.</p>
-            <form action="/create-order" method="post">
-              <div class="field">
-                <input name="name" placeholder="Full name" required />
-                <input name="email" placeholder="Email address" required />
+          <div class="col">
+            <div class="card h-100 bg-transparent text-light border-light">
+              <img src="bignightout.png" class="card-img-top rounded-4" alt="Big Night Out">
+              <div class="card-body">
+                <h5 class="card-title text-warning">Big Night Out Candy</h5>
+                <p class="card-text">Milk chocolate with popping candy and raspberries.</p>
+                <p class="fw-bold">$9</p>
               </div>
-              <div class="field">
-                <input name="product" placeholder="Product (e.g. golden-truffle)" required />
-                <input name="quantity" type="number" min="1" value="1" required />
+              <div class="card-footer bg-transparent border-0">
+                <button class="btn btn-outline-warning w-100">Buy — $9</button>
               </div>
-              <div class="field">
-                <input name="address" placeholder="Shipping address" required />
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card h-100 bg-transparent text-light border-light">
+              <img src="milkchoco.png" class="card-img-top rounded-4" alt="Wonka Cocoa Box">
+              <div class="card-body">
+                <h5 class="card-title text-warning">Wonka Cocoa Box</h5>
+                <p class="card-text">Espresso, hazelnut, orange blossom and more.</p>
+                <p class="fw-bold">$26</p>
               </div>
-              <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
-                <button class="btn-primary" type="submit">Place order</button>
+              <div class="card-footer bg-transparent border-0">
+                <button class="btn btn-outline-warning w-100">Buy — $26</button>
               </div>
-            </form>
-          </section>
+            </div>
+          </div>
         </div>
 
-        <aside class="best-sellers">
-          <img src="wonka.png" alt="Chocolate"/>
-          <h4>Best sellers</h4>
-          <div class="best-items">
-            <div>Velvet Cocoa Box — $26</div>
-            <div>Golden Truffle — $12</div>
-            <div>FizzBerry Bar — $9</div>
+        <!-- Task 7: Bootstrap Carousel -->
+        <section class="mt-5">
+          <h2 class="text-center mb-3">Magic Moments Gallery</h2>
+          <div id="wonkaCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner rounded-4">
+              <div class="carousel-item active"><img src="bignightout.png" class="d-block w-100" alt="Big Night Out"></div>
+              <div class="carousel-item"><img src="silver.png" class="d-block w-100" alt="Silver Lightning"></div>
+              <div class="carousel-item"><img src="fourty.png" class="d-block w-100" alt="Forty Second Sweet"></div>
+              <div class="carousel-item"><img src="giraffe.png" class="d-block w-100" alt="Macaroon"></div>
+              <div class="carousel-item"><img src="mint.png" class="d-block w-100" alt="Mint Bar"></div>
+              <div class="carousel-item"><img src="hair.png" class="d-block w-100" alt="Hair Repair Eclair"></div>
+              <div class="carousel-item"><img src="wonk.png" class="d-block w-100" alt="Wonka"></div>
+              <div class="carousel-item"><img src="bar.png" class="d-block w-100" alt="Wonka Bar"></div>
+              <div class="carousel-item"><img src="cup.png" class="d-block w-100" alt="Cupcakes"></div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#wonkaCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#wonkaCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
           </div>
-          <div class="note">Free local pickup on orders over $40.</div>
-        </aside>
-      </section>
+        </section>
 
-      <footer>
-        © Willy Wonka's Chocolates — handcrafted with a little magic
-      </footer>
-    </main>
+        <!-- Task 9: Responsive Form -->
+        <section class="mt-5">
+          <h3>Order & Checkout</h3>
+          <form class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Full name" required>
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" placeholder="Email address" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Product name" required>
+            </div>
+            <div class="col-md-6">
+              <input type="number" class="form-control" placeholder="Quantity" min="1" value="1" required>
+            </div>
+            <div class="col-12">
+              <input type="text" class="form-control" placeholder="Shipping address" required>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-warning btn-lg mt-3">Place Order</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <footer class="text-center text-white-50 mt-5 mb-3 small">
+      © Willy Wonka's Chocolates — handcrafted with a little magic
+    </footer>
   </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
