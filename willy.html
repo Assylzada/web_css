@@ -4,287 +4,203 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Willy Wonka — Magical Factory</title>
-
-  <!-- Bootstrap CSS (v5.3) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Fonts + Custom styles -->
   <link rel="stylesheet" href="style2.css">
 </head>
 <body>
-  <!-- Decorative background elements (kept for look & feel) -->
-  <div class="bubbles" aria-hidden="true">
+  <div class="bubbles">
     <span></span><span></span><span></span><span></span><span></span>
   </div>
-  <div class="sparkle" aria-hidden="true"></div>
-  <div class="sparkle" aria-hidden="true"></div>
-  <div class="sparkle" aria-hidden="true"></div>
-  <div class="sparkle" aria-hidden="true"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
 
-  <!-- Header / Navbar (Bootstrap) -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent border-bottom" aria-label="Main navigation">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+    <div class="container">
+      <nav>
+        <div class="brand">
           <div class="logo-circle">W</div>
-          <span class="brand-text">Wonka Factory</span>
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
-                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="mainNav">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-            <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
-            <li class="nav-item"><a class="nav-link" href="#registerForm">Apply</a></li>
-          </ul>
+          <span>Wonka Factory</span>
         </div>
-      </div>
-    </nav>
+    
+        <div class="menu">
+          <a href="#" class="active">Home</a>
+          <a href="index.html">About</a>
+          <a href="movies.html">Movies</a>
+          <a href="shop.html">Shop</a>
+          <a href="#registerForm">Apply</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <main class="container my-5" id="top">
-    <!-- HERO (two-column grid) -->
-    <section class="hero row align-items-center gy-4">
-      <div class="col-lg-6">
-        <h1 class="display-title">Welcome to Willy Wonka’s Magical World</h1>
-        <p class="lead">Chocolate, gold and starlight. A factory where magic and luxury meet in every detail.</p>
-        <div class="d-flex gap-2 flex-wrap">
-          <a href="#shop" class="btn btn-lg btn-primary me-2">Visit Shop</a>
-          <div class="btn-group" role="group" aria-label="Extra actions">
-            <button type="button" class="btn btn-outline-light btn-sm">Learn More</button>
-            <button type="button" class="btn btn-outline-light btn-sm">Tours</button>
-          </div>
-        </div>
-
-        <div class="ticket mt-4" aria-hidden="true">
-          <img src="gt.png" alt="Golden Ticket" class="img-fluid w-75">
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h2>Welcome to Willy Wonka’s Magical World</h2>
+        <p>Chocolate, gold and starlight. A factory where magic and luxury meet in every detail.</p>
+        <a href="#shop" class="btn">Visit Shop</a>
+        <div class="ticket">
+          <img src="photo/gt.png" alt="Golden Ticket"/>
         </div>
       </div>
-
-      <div class="col-lg-6 text-center">
-        <img src="wonka.png" alt="Chocolate" class="img-fluid rounded-3 hero-image">
+      <div>
+        <img src="photo/wonka.png" alt="Chocolate"/>
       </div>
     </section>
 
-    <!-- GRID: Left cards + Right shop (Bootstrap grid) -->
-    <section class="row mt-5 g-4" id="about">
-      <!-- Left: Cards area (we'll use custom .cards with CSS media queries for Task 2) -->
-      <div class="col-lg-8">
-        <h2 class="section-title">About the Factory</h2>
-        <p class="muted mb-3">Our factory is about textures, aromas, and shimmering magic. The spell of chocolate in every corner.</p>
-
-        <!-- Cards group: these are the same items as in your original HTML -->
-        <div class="cards" role="list">
-          <article class="card-item" role="listitem">
-            <img src="rec.png" alt="Recipes" class="card-item-img">
+    <section id="about" class="grid">
+      <div>
+        <h3>About the Factory</h3>
+        <p style="margin:10px 0">
+          Our factory is about textures, aromas, and shimmering magic. 
+          The spell of chocolate in every corner.
+        </p>
+        <div class="cards">
+          <div class="card">
+            <img src="photo/rec.png" width="150" alt="Recipes">
             <h3>Recipes</h3>
             <p>Rare cocoa beans and enchanted fillings.</p>
-            <a href="#recipes" class="btn btn-primary w-100">Recipes</a>
-          </article>
-
-          <article class="card-item" role="listitem">
-            <img src="golden.png" alt="Tickets" class="card-item-img">
+            <a href="#recipes"><button>Recipes</button></a>
+          </div>
+          <div class="card">
+            <img src="photo/milkchoco.png" width="150" alt="Tickets">
             <h3>Tickets</h3>
             <p>Limited golden tickets glowing with charm.</p>
-            <a href="#tickets" class="btn btn-primary w-100">Register</a>
-          </article>
-
-          <article class="card-item" role="listitem">
-            <img src="test.png" alt="Tastings" class="card-item-img">
+            <a href="#tickets"><button>Register</button></a>
+          </div>
+          <div class="card">
+            <img src="photo/test.png" width="150" alt="Tastings">
             <h3>Tastings</h3>
             <p>Personal magical journeys for connoisseurs.</p>
-            <a href="#tastings" class="btn btn-primary w-100">Shop</a>
-          </article>
-
-          <article class="card-item" role="listitem">
-            <img src="pack.png" alt="Packaging" class="card-item-img">
+            <a href="#tastings"><button>Shop</button></a>
+          </div>
+          <div class="card">
+            <img src="photo/pack.png" width="150" alt="Packaging">
             <h3>Packaging</h3>
             <p>Magnificent design with stardust details.</p>
-            <a href="#factory" class="btn btn-primary w-100">Factory</a>
-          </article>
+            <a href="#factory"><button>Factory</button></a>
+          </div>
         </div>
       </div>
-
-      <!-- Right: Shop sidebar -->
-      <aside class="col-lg-4" id="shop" aria-labelledby="shop-heading">
-        <h3 id="shop-heading" class="section-title">Shop</h3>
-
-        <div class="card mb-3 shop-card">
-          <div class="card-body d-flex gap-3 align-items-center">
-            <img src="milkchoco.png" alt="Truffle" class="rounded-circle product-thumb">
-            <div>
-              <strong>Premium milk chocolate Wonka</strong>
-              <div class="price mt-1">$12</div>
-            </div>
-          </div>
+      <aside id="shop" class="shop">
+      <h3>Shop</h3>
+      <div class="product">
+        <img src="photo/bar.png" alt="Truffle"/>
+        <div>
+          <strong>Premium milk chocolate Wonka</strong>
+          <div class="price">$12</div>
         </div>
-
-        <div class="card mb-3 shop-card">
-          <div class="card-body d-flex gap-3 align-items-center">
-            <img src="silver.png" alt="Ticket" class="rounded-circle product-thumb">
-            <div>
-              <strong>Silver Lightning</strong>
-              <div class="price mt-1">$19</div>
-            </div>
-          </div>
+      </div>
+      <div class="product">
+        <img src="photo/silver.png" alt="Ticket"/>
+        <div>
+          <strong>Silver Lightning</strong>
+          <div class="price">$19</div>
         </div>
-
-        <div class="card mb-3 shop-card">
-          <div class="card-body d-flex gap-3 align-items-center">
-            <img src="bignightout.png" alt="Bar" class="rounded-circle product-thumb">
-            <div>
-              <strong>Big night out</strong>
-              <div class="price mt-1">$9</div>
-            </div>
-          </div>
+      </div>
+      <div class="product">
+        <img src="photo/bignightout.png" alt="Bar"/>
+        <div>
+          <strong>Big night out</strong>
+          <div class="price">$9</div>
         </div>
-
-      </aside>
+      </div>
+          <h3>Current Date and Time</h3>
+          <div id="datetime"></div>
+          <h3>Change Background Color</h3>
+          <button id="colorBtn">Change Color</button>
+    </aside>
     </section>
 
-    <!-- Gallery + Bootstrap Carousel -->
-    <section class="gallery-section mt-5">
-      <h2 class="section-title text-center">Magic Moments Gallery</h2>
-
-      <!-- Bootstrap Carousel (9 images) -->
-      <div id="wonkaCarousel" class="carousel slide my-4" data-bs-ride="carousel" aria-label="Wonka product images">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
-          <button type="button" data-bs-target="#wonkaCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
-        </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="bignightout.png" class="d-block w-100 carousel-img" alt="Big Night Out">
-          </div>
-          <div class="carousel-item">
-            <img src="silver.png" class="d-block w-100 carousel-img" alt="Silver Lightning">
-          </div>
-          <div class="carousel-item">
-            <img src="fourty.png" class="d-block w-100 carousel-img" alt="Forty Second Sweet">
-          </div>
-          <div class="carousel-item">
-            <img src="giraffe.png" class="d-block w-100 carousel-img" alt="Macaroon">
-          </div>
-          <div class="carousel-item">
-            <img src="mint.png" class="d-block w-100 carousel-img" alt="Mint Bar">
-          </div>
-          <div class="carousel-item">
-            <img src="hair.png" class="d-block w-100 carousel-img" alt="Hair Repair Eclair">
-          </div>
-          <div class="carousel-item">
-            <img src="wonk.png" class="d-block w-100 carousel-img" alt="Wonka">
-          </div>
-          <div class="carousel-item">
-            <img src="bar.png" class="d-block w-100 carousel-img" alt="Wonka Bar">
-          </div>
-          <div class="carousel-item">
-            <img src="cup.png" class="d-block w-100 carousel-img" alt="Cupcakes">
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#wonkaCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#wonkaCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-
-      <!-- Grid of thumbnails (keeps original 12 items as gallery) -->
-      <div class="row g-3 gallery-grid mt-3" aria-hidden="false">
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="bignightout.png" alt=""><figcaption>Big Night Out</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="silver.png" alt=""><figcaption>Silver Lightning</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="fourty.png" alt=""><figcaption>Forty Second Sweet</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="giraffe.png" alt=""><figcaption>Macaroon</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="mint.png" alt=""><figcaption>Mint Bar</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="hair.png" alt=""><figcaption>Hair Repair Eclair</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="wonk.png" alt=""><figcaption>Wonka</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="bar.png" alt=""><figcaption>Wonka Bar</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="cup.png" alt=""><figcaption>Cupcakes</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="cake.png" alt=""><figcaption>Chocolate cake</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="cookies.png" alt=""><figcaption>Cookies</figcaption></figure></div>
-        <div class="col-sm-6 col-md-4 col-lg-3"><figure class="gallery-item"><img src="cake2.png" alt=""><figcaption>White chocolate cake</figcaption></figure></div>
+    <section id="gallery" class="gallery-section">
+      <h2>Magic Moments Gallery</h2>
+      <div class="gallery">
+        <div class="gallery-item"><img src="photo/bignightout.png" alt=""><div class="caption">Big Night Out</div></div>
+        <div class="gallery-item"><img src="photo/silver.png" alt=""><div class="caption">Silver Lightning</div></div>
+        <div class="gallery-item"><img src="photo/fourty.png" alt=""><div class="caption">Forty Second Sweet</div></div>
+        <div class="gallery-item"><img src="photo/giraffe.png" alt=""><div class="caption">Macaroon</div></div>
+        <div class="gallery-item"><img src="photo/mint.png" alt=""><div class="caption">Mint Bar</div></div>
+        <div class="gallery-item"><img src="photo/hair.png" alt=""><div class="caption">Hair Repair Eclair</div></div>
+        <div class="gallery-item"><img src="photo/wonk.png" alt=""><div class="caption">Wonka</div></div>
+        <div class="gallery-item"><img src="photo/bar.png" alt=""><div class="caption">Wonka Bar</div></div>
+        <div class="gallery-item"><img src="photo/cup.png" alt=""><div class="caption">Cupcakes</div></div>
+        <div class="gallery-item"><img src="photo/cake.png" alt=""><div class="caption">Chocolate cake</div></div>
+        <div class="gallery-item"><img src="photo/cookies.png" alt=""><div class="caption">Cookies</div></div>
+        <div class="gallery-item"><img src="photo/cake2.png" alt=""><div class="caption">White chocolate cake</div></div>
       </div>
     </section>
+<br>
+    <div class="container2">
+      <h2>Golden Ticket Form</h2>
+      <form id="registerForm">
 
-    <!-- Registration form (Bootstrap forms & spacing utilities) -->
-    <section class="mt-5">
-      <div class="container-fluid px-2 px-md-4">
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
-            <div class="registration-panel p-4 p-lg-5 rounded-3">
-              <h2 class="mb-3">Golden Ticket Form</h2>
-              <form id="registerForm" class="row g-3" novalidate>
-                <div class="col-md-6">
-                  <label for="fullName" class="form-label">Full Name:</label>
-                  <input type="text" class="form-control" id="fullName" required>
-                </div>
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" required>
 
-                <div class="col-md-6">
-                  <label for="passport" class="form-label">Ticket Number:</label>
-                  <input type="text" class="form-control" id="passport" required>
-                </div>
+      <label for="passport">Ticket Number:</label>
+      <input type="text" id="passport" required placeholder="e.g., AB1234">
 
-                <div class="col-md-6">
-                  <label for="email" class="form-label">Email:</label>
-                  <input type="email" class="form-control" id="email" required>
-                </div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
 
-                <div class="col-md-6">
-                  <label for="test_date" class="form-label">Date:</label>
-                  <input type="date" class="form-control" id="test_date">
-                </div>
+      <label for="test_date">Date:</label>
+      <input type="date" id="test_date">
 
-                <div class="col-md-6">
-                  <label for="city" class="form-label">Your City:</label>
-                  <select id="city" class="form-select" required>
-                    <option value="Almaty">Almaty</option>
-                    <option value="Astana">Astana</option>
-                    <option value="Shymkent">Shymkent</option>
-                    <option value="Aktobe">Aktobe</option>
-                    <option value="Aktau">Aktau</option>
-                    <option value="Atyrau">Atyrau</option>
-                    <option value="Pavlodar">Pavlodar</option>
-                    <option value="Semey">Semey</option>
-                    <option value="Oral">Oral</option>
-                    <option value="Turkistan">Turkistan</option>
-                    <option value="Oskemen">Oskemen</option>
-                  </select>
-                </div>
+      <label for="city">Your City:</label>
+      <select id="city" name="city" required>
+        <option value="">--Select City--</option>
+        <option value="Almaty">Almaty</option>
+        <option value="Astana">Astana</option>
+        <option value="Shymkent">Shymkent</option>
+        <option value="Aktobe">Aktobe</option>
+        <option value="Aktau">Aktau</option>
+        <option value="Atyrau">Atyrau</option>
+        <option value="Pavlodar">Pavlodar</option>
+        <option value="Semey">Semey</option>
+        <option value="Oral">Oral</option>
+        <option value="Turkistan">Turkistan</option>
+        <option value="Oskemen">Oskemen</option>
+      </select>
 
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary btn-lg w-100">Register</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+      <button type="submit">Register</button>
+        
+    </form>
+
+    <button id="openPopup">Subscribe</button>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <h2>Subscribe to Newsletter</h2>
+        <form id="popupForm">
+          <input type="email" id="popupEmail" placeholder="Enter your email" required><br><br>
+          <button type="submit">Send</button>
+        </form>
       </div>
-    </section>
+    </div>
+
+    </div>
+    
+    <div class="accordion">
+      <div class="item">
+        <div class="question">Who is Willy Wonka?</div>
+        <div class="answer">Willy Wonka is a fictional character created by Roald Dahl, who is the eccentric owner of the Wonka Chocolate Factory, first introduced in the 1964 novel Charlie and the Chocolate Factory. He is known as a famous inventor and chocolatier who seeks a worthy heir to take over his factory, a plot that is central to the book and its various adaptations.</div>
+      </div>
+      <div class="item">
+        <div class="question">What is Golden Ticket?</div>
+        <div class="answer">Golden Tickets are five special passes hidden in Wonka candy bars, which grant the finder and one family member a private tour of Willy Wonka's mysterious factory.</div>
+      </div>
+    </div>
 
   </main>
 
-  <footer class="text-center py-3">
+  <footer>
     © Willy Wonka Factory — demo site, no real payments
   </footer>
+  
+  <!-- Script -->
+  <script src="willy.js" defer></script>
 
-  <!-- Bootstrap JS (Popper included) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

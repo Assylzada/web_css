@@ -1,198 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Willy Wonka Movies</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="movies.css" />
+  <link rel="stylesheet" href="movies.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3" role="navigation" aria-label="Main navigation">
-  <a class="navbar-brand d-flex align-items-center" href="#">
-    <img src="https://static.vecteezy.com/system/resources/previews/044/037/947/non_2x/gold-alphabet-letter-and-number-free-png.png"
-         alt="W logo" height="40" class="me-2" />
-    Willy Wonka's World
-  </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navMenu">
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item"><a class="nav-link" href="willy.html">Home</a></li>
-      <li class="nav-item"><a class="nav-link" href="index.html">About</a></li>
-      <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
-      <li class="nav-item"><a class="nav-link" href="movies.html">Movies</a></li>
-    </ul>
+  <!-- Header -->
+  <div id="top-banner" class="header-section">
+    <div class="container header-inner">
+      <h1 class="site-title">Willy Wonka's World</h1>
+      <div class="nav">
+        <a href="willy.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link">About</a>
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="movies.html" class="nav-link">Movies</a>
+      </div>
+    </div>
   </div>
-</nav>
-
-<header class="py-5 text-center text-light gradient-hero">
-  <div class="container">
-    <h1 class="display-heading mb-2">Willy Wonka on the Big Screen</h1>
-    <p class="lead m-0">Decades of magic—each era with its own sparkle.</p>
+  
+  <div class="page-intro">
+    <h2>Willy Wonka on the Big Screen</h2>
+    <p>Over the decades, Willy Wonka has been brought to life by different actors, each adding their own magic.</p>
   </div>
-</header>
 
-<div class="container my-5">
-
-  <section class="mb-5">
-    <h2 class="section-title">Filmography Highlights</h2>
-    <div class="row g-4">
-      <div class="col-sm-6 col-lg-4">
-        <div class="highlight-box h-100">
-          <h4 class="mb-2">1971 Classic</h4>
-          <p class="mb-0">Gene Wilder’s whimsical icon who defined Wonka for generations.</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="highlight-box h-100">
-          <h4 class="mb-2">2005 Adaptation</h4>
-          <p class="mb-0">Tim Burton’s quirky vision with Johnny Depp’s eccentric twist.</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-lg-4">
-        <div class="highlight-box h-100">
-          <h4 class="mb-2">2023 Prequel</h4>
-          <p class="mb-0">Timothée Chalamet explores Wonka’s beginnings and big dreams.</p>
-        </div>
-      </div>
+  <!-- Movie Cards -->
+  <div class="container card-row">
+    <div class="card">
+      <img src="https://i.ebayimg.com/images/g/bK4AAOSwjyNiT4~T/s-l1200.jpg" alt="1971 Movie Poster">
+      <h3>1971 Classic</h3>
+      <p>Gene Wilder’s legendary performance in the first Wonka film.</p>
+      <button class="btn">Learn More</button>
     </div>
-  </section>
-
-  <section class="my-5">
-    <h2 class="section-title">Movies</h2>
-    <div class="row g-4">
-      <!-- card 1 -->
-      <div class="col-md-4">
-        <div class="card text-center h-100 shadow-sm">
-          <img class="card-img-top fixed-card-img" src="https://i.ebayimg.com/images/g/bK4AAOSwjyNiT4~T/s-l1200.jpg" alt="1971 Movie Poster"/>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">1971 Classic</h5>
-            <p class="card-text">Gene Wilder’s legendary performance in the first Wonka film.</p>
-            <div class="mt-auto">
-              <button class="btn btn-primary btn-sm">Learn More</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- card 2 -->
-      <div class="col-md-4">
-        <div class="card text-center h-100 shadow-sm">
-          <img class="card-img-top fixed-card-img" src="https://w0.peakpx.com/wallpaper/1012/654/HD-wallpaper-charlie-and-the-chocolate-factory-willy-wonka-movies-johnny-depp-actors-johnny-depp-actor.jpg" alt="2005 Movie Poster"/>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">2005 Adaptation</h5>
-            <p class="card-text">Johnny Depp brings a darker, eccentric Wonka to life.</p>
-            <div class="mt-auto">
-              <button class="btn btn-success btn-sm">Explore</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<!-- card 3 -->
-      <div class="col-md-4">
-        <div class="card text-center h-100 shadow-sm">
-          <img class="card-img-top fixed-card-img" src="https://m.media-amazon.com/images/M/MV5BM2Y1N2ZhNjctYjVhZC00MDg2LWFhNTItMzI3ZjAwZDhjYmFiXkEyXkFqcGc@._V1_.jpg" alt="2023 Movie Poster"/>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">2023 Prequel</h5>
-            <p class="card-text">Timothée Chalamet explores Wonka’s origin story.</p>
-            <div class="mt-auto">
-              <button class="btn btn-warning btn-sm">Try It</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="card">
+      <img src="https://w0.peakpx.com/wallpaper/1012/654/HD-wallpaper-charlie-and-the-chocolate-factory-willy-wonka-movies-johnny-depp-actors-johnny-depp-actor.jpg" alt="2005 Movie Poster">
+      <h3>2005 Adaptation</h3>
+      <p>Johnny Depp as a darker, eccentric Willy Wonka.</p>
+      <button class="btn">Learn More</button>
     </div>
-  </section>
-
-  <section class="about-box p-4 my-5">
-    <h2 class="section-title">Wonka’s Favourite Chocolates</h2>
-    <div class="pure-cards" aria-label="Responsive cards without Bootstrap">
-      <article class="pure-card">
-        <img src="https://static.vecteezy.com/system/resources/previews/059/022/054/non_2x/delicious-melted-milk-chocolate-bar-with-splash-cocoa-powder-isolated-free-png.png" alt="Chocolate close-up" />
-        <h3 class="h5 mt-2">Cocoa Basics</h3>
-        <p class="mb-0">From bean to bar—learn the journey.</p>
-      </article>
-      <article class="pure-card">
-        <img src="https://static.vecteezy.com/system/resources/previews/051/336/834/non_2x/delicious-chocolate-bars-arranged-neatly-on-a-transparent-background-with-scattered-pieces-chocolate-bars-insolated-on-transparent-background-free-png.png" alt="Chocolate bar" />
-        <h3 class="h5 mt-2">Bars & Bites</h3>
-        <p class="mb-0">Shapes and textures for every taste.</p>
-      </article>
-      <article class="pure-card">
-        <img src="https://static.vecteezy.com/system/resources/previews/050/280/653/non_2x/assorted-gourmet-chocolate-truffles-with-various-toppings-like-nuts-cocoa-powder-on-a-transparent-background-free-png.png" alt="Truffles" />
-        <h3 class="h5 mt-2">Luxury Truffles</h3>
-        <p class="mb-0">Decadent centers with glossy shells.</p>
-      </article>
+    <div class="card">
+      <img src="https://m.media-amazon.com/images/M/MV5BM2Y1N2ZhNjctYjVhZC00MDg2LWFhNTItMzI3ZjAwZDhjYmFiXkEyXkFqcGc@._V1_.jpg" alt="2023 Movie Poster">
+      <h3>2023 Prequel</h3>
+      <p>Timothée Chalamet explores Wonka’s beginnings.</p>
+      <button class="btn">Learn More</button>
     </div>
-  </section>
+  </div>
 
-  <section class="my-5">
-    <h2 class="section-title">Movie Gallery</h2>
-    <div id="movieCarousel" class="carousel slide carousel-dark" data-bs-ride="carousel" aria-label="Movie gallery">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
-        <button type="button" data-bs-target="#movieCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
-      </div>
+  <!-- Gallery -->
+  <div class="gallery-container">
+    <div class="gallery-item"><img src="https://i.ebayimg.com/images/g/bK4AAOSwjyNiT4~T/s-l1200.jpg" alt="1971 Poster"><span class="caption">1971 Poster</span></div>
+    <div class="gallery-item"><img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2016/12/Gene-Wilder-in-Willy-Wonka-and-the-Chocolate-Factory.jpg" alt="Gene Wilder"><span class="caption">Gene Wilder</span></div>
+    <div class="gallery-item"><img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Oompa_Loompas_in_1971.png" alt="Oompa Loompas"><span class="caption">Oompa Loompas</span></div>
+    <div class="gallery-item"><img src="https://images.bauerhosting.com/legacy/empire-tmdb/films/252/images/nyqiCFF3pjcdwG2KmOwvM6CCLKA.jpg" alt="2005 Scene"><span class="caption">2005 Scene</span></div>
+    <div class="gallery-item"><img src="https://m.media-amazon.com/images/M/MV5BMTM1MzAyMTk3Nl5BMl5BanBnXkFtZTcwMTIyNTIyMw@@._V1_.jpg" alt="2005 Depp"><span class="caption">Johnny Depp</span></div>
+    <div class="gallery-item"><img src="https://static.wikia.nocookie.net/timburton/images/b/b1/WillyWonka.jpg" alt="Burton Style"><span class="caption">Burton Style</span></div>
+    <div class="gallery-item"><img src="https://i.abcnewsfe.com/a/a17fff4a-bb10-404f-9b1a-ecfab143be95/wonka-ht-gmh-230711_1689091578200_hpMain_16x9.jpg" alt="2023 Poster"><span class="caption">2023 Poster</span></div>
+    <div class="gallery-item"><img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2023-12/willy-wonka-mc-231211-01-b60c9a.jpg" alt="Chalamet"><span class="caption">Chalamet</span></div>
+  </div>
 
-<div class="carousel-inner rounded overflow-hidden">
-        <div class="carousel-item active"><img src="https://i.ebayimg.com/images/g/bK4AAOSwjyNiT4~T/s-l1200.jpg" class="d-block w-100 car-img" alt="1971 Poster"></div>
-        <div class="carousel-item"><img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2016/12/Gene-Wilder-in-Willy-Wonka-and-the-Chocolate-Factory.jpg" class="d-block w-100 car-img" alt="Gene Wilder"></div>
-        <div class="carousel-item"><img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Oompa_Loompas_in_1971.png" class="d-block w-100 car-img" alt="Oompa Loompas"></div>
-        <div class="carousel-item"><img src="https://images.bauerhosting.com/legacy/empire-tmdb/films/252/images/nyqiCFF3pjcdwG2KmOwvM6CCLKA.jpg" class="d-block w-100 car-img" alt="2005 Scene"></div>
-        <div class="carousel-item"><img src="https://m.media-amazon.com/images/M/MV5BMTM1MzAyMTk3Nl5BMl5BanBnXkFtZTcwMTIyNTIyMw@@._V1_.jpg" class="d-block w-100 car-img" alt="Johnny Depp"></div>
-        <div class="carousel-item"><img src="https://static.wikia.nocookie.net/timburton/images/b/b1/WillyWonka.jpg" class="d-block w-100 car-img" alt="Burton Style"></div>
-        <div class="carousel-item"><img src="https://i.abcnewsfe.com/a/a17fff4a-bb10-404f-9b1a-ecfab143be95/wonka-ht-gmh-230711_1689091578200_hpMain_16x9.jpg" class="d-block w-100 car-img" alt="2023 Poster"></div>
-        <div class="carousel-item"><img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2023-12/willy-wonka-mc-231211-01-b60c9a.jpg" class="d-block w-100 car-img" alt="Chalamet"></div>
-        <div class="carousel-item"><img src="https://64.media.tumblr.com/8ea5c97c53add91d60131f0734b3e9c3/tumblr_poq4780jQH1vkrugf_400.jpg" class="d-block w-100 car-img" alt="Young Wonka art"></div>
-      </div>
-
-      <button class="carousel-control-prev visible-ctrl" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev" aria-label="Previous">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      </button>
-      <button class="carousel-control-next visible-ctrl" type="button" data-bs-target="#movieCarousel" data-bs-slide="next" aria-label="Next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      </button>
+<div class="faq-section container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3 class="faq-question">Who created Willy Wonka?</h3>
+      <p class="faq-answer">Willy Wonka was created by author Roald Dahl in his famous book "Charlie and the Chocolate Factory".</p>
     </div>
-  </section>
+    <div class="faq-item">
+      <h3 class="faq-question">Is the 2023 movie connected to the original?</h3>
+      <p class="faq-answer">The 2023 movie is a prequel, showing how Wonka started his chocolate empire.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-question">Where were the movies filmed?</h3>
+      <p class="faq-answer">Filming took place across various locations including the UK and Germany.</p>
+    </div>
+  </div>
 
-  <section class="about-box py-5">
-    <h2 class="section-title">Suggest a Movie Night</h2>
-    <form class="movie-form" aria-label="Suggest a movie form">
-      <div class="mb-3">
-        <label for="mname" class="form-label">Your Name</label>
-        <input id="mname" type="text" class="form-control" placeholder="Enter your name" required>
-      </div>
-      <div class="mb-3">
-        <label for="memail" class="form-label">Email Address</label>
-        <input id="memail" type="email" class="form-control" placeholder="you@example.com" required>
-      </div>
-      <div class="mb-3">
-        <label for="msuggest" class="form-label">Movie Suggestion</label>
-        <textarea id="msuggest" class="form-control" rows="4" placeholder="Which Wonka film should we watch?" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-outline-primary w-100">Send Suggestion</button>
-    </form>
-  </section>
+  <!-- Interactive Features -->
+  <div class="interactive-section container">
+    <div class="color-change">
+      <h3>Change Background Color</h3>
+      <button id="colorBtn">Change Background</button>
+    </div>
 
-</div>
+    <div class="date-time">
+      <h3>Current Date and Time</h3>
+      <p id="dateTime"></p>
+    </div>
 
-<!-- footer -->
-<footer class="footer bg-dark text-light text-center py-3 mt-5" role="contentinfo">
-  <p class="mb-0">© Willy Wonka's World — Celebrating cinema and imagination.</p>
-</footer>
+    <div class="subscribe">
+      <h3>Stay Updated</h3>
+      <button id="openPopup" class="btn">Subscribe</button>
+    </div>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Popup Subscription Form -->
+  <div id="popupForm" class="popup">
+    <div class="popup-content">
+      <span id="closePopup" class="close">&times;</span>
+      <h2>Subscribe to Willy Wonka's World</h2>
+      <form id="subscribeForm">
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <span id="emailError" class="error"></span>
+        <label>Password:</label>
+        <input type="password" id="password" placeholder="Enter password">
+        <span id="passwordError" class="error"></span>
+        <label>Confirm Password:</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password">
+        <span id="confirmError" class="error"></span>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="site-footer">
+    <div class="container">
+      <p>© 2025 Assylay Shukirbay. All rights reserved.</p>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="movies.js" defer></script>
 </body>
 </html>
