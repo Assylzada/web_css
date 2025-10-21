@@ -12,16 +12,19 @@
   <div id="top-banner" class="header-section">
     <div class="container header-inner">
       <h1 class="site-title">Willy Wonka's World</h1>
+
       <div class="nav">
-        <a href="willy.html" class="nav-link">Home</a>
-        <a href="index.html" class="nav-link">About</a>
-        <a href="shop.html" class="nav-link">Shop</a>
-        <a href="movies.html" class="nav-link">Movies</a>
+        <a href="willy.html" class="nav-item nav-link">Home</a>
+        <a href="index.html" class="nav-item nav-link">About</a>
+        <a href="shop.html" class="nav-item nav-link">Shop</a>
+        <a href="movies.html" class="nav-item nav-link">Movies</a>
       </div>
     </div>
   </div>
   
   <div class="page-intro">
+    <!-- Dynamic Greeting -->
+    <h3 id="greetingMessage" class="greeting-message"></h3>
     <h2>Willy Wonka on the Big Screen</h2>
     <p>Over the decades, Willy Wonka has been brought to life by different actors, each adding their own magic.</p>
   </div>
@@ -60,7 +63,7 @@
     <div class="gallery-item"><img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2023-12/willy-wonka-mc-231211-01-b60c9a.jpg" alt="Chalamet"><span class="caption">Chalamet</span></div>
   </div>
 
-<div class="faq-section container">
+  <div class="faq-section container">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
       <h3 class="faq-question">Who created Willy Wonka?</h3>
@@ -83,9 +86,10 @@
       <button id="colorBtn">Change Background</button>
     </div>
 
-    <div class="date-time">
-      <h3>Current Date and Time</h3>
-      <p id="dateTime"></p>
+    <!-- Dynamic Text Change Section -->
+    <div class="dynamic-message">
+      <h3 id="wonkaMessage">Click the button to reveal a surprise message!</h3>
+      <button id="messageBtn" class="btn">Reveal Message</button>
     </div>
 
     <div class="subscribe">
@@ -113,6 +117,78 @@
       </form>
     </div>
   </div>
+
+
+  <!-- Time display -->
+  <div class="time-display-section">
+    <h3>Check the Current Time</h3>
+    <button id="showTimeBtn" class="btn">Show Current Time</button>
+    <p id="timeDisplay">--:--:--</p>
+  </div>
+
+  <!-- --- Play Sound + Theme Switch Container --- -->
+  <div class="sound-theme-box">
+    <h2>Sound & Theme Controls</h2>
+
+    <!-- Play Sound Section -->
+    <div class="sound-section">
+      <button id="playSoundBtn" class="btn">Play Notification Sound<div id="magicChoco" class="magic-note">🎵</div>
+      </button>
+      <audio id="notificationSound" src="magic sound.mp3"></audio>
+    </div>
+
+    <!-- Theme Switch Section -->
+    <div class="theme-switch-section">
+      <button id="themeToggleBtn" class="btn">Switch to Night Mode 🌙</button>
+    </div>
+  </div>
+
+    <!-- Movie Rating Section -->
+  <div class="rating-section container">
+    <h2>✨ Rate Willy Wonka’s Magic ✨</h2>
+    <p>How magical was your favorite movie?</p>
+
+    <div class="star-rating">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+
+    <p id="ratingResult" class="rating-result"></p>
+  </div>
+
+  <!-- Multi-Step Form -->
+  <div class="multi-step-form container">
+    <h2>Golden Ticket Application</h2>
+    <form id="wonkaForm">
+      <div class="form-step active">
+        <label>Name:</label>
+        <input type="text" id="stepName" placeholder="Enter your name">
+        <button type="button" class="nextBtn">Next</button>
+      </div>
+
+      <div class="form-step">
+        <label>Favorite Chocolate:</label>
+        <input type="text" id="stepChocolate" placeholder="Enter your favorite chocolate">
+        <div class="btn-group">
+          <button type="button" class="backBtn">Back</button>
+          <button type="button" class="nextBtn">Next</button>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <label>Why do you deserve the Golden Ticket?</label>
+        <textarea id="stepReason" rows="3" placeholder="Your reason..."></textarea>
+        <div class="btn-group">
+          <button type="button" class="backBtn">Back</button>
+          <button type="submit" class="btn">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
 
   <!-- Footer -->
   <div class="site-footer">

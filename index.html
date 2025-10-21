@@ -14,11 +14,14 @@
   <header class="header">
 
     <h1 class="site-title">Willy Wonka's World</h1>
+    <!-- Dynamic Greeting -->
+    <h3 id="greetingMessage" class="greeting-message"></h3>
+
     <nav class="nav">
-      <a href="willy.html" class="nav-link">Home</a>
-      <a href="index.html" class="nav-link">About</a>
-      <a href="shop.html" class="nav-link">Shop</a>
-      <a href="movies.html" class="nav-link">Movies</a>
+      <a href="willy.html" class="nav-item nav-link">Home</a>
+      <a href="index.html" class="nav-item nav-link">About</a>
+      <a href="shop.html" class="nav-item nav-link">Shop</a>
+      <a href="movies.html" class="nav-item nav-link">Movies</a>
     </nav>
 
   </header>
@@ -29,16 +32,28 @@
 
     <!-- Subscribe Button (Task 3 trigger) -->
     <div style="margin-top:20px;">
-      <button id="openSubscribe" class="btn">Subscribe for Sweet Updates</button>
+      <button id="openSubscribe" class="nav item btn">Subscribe for Sweet Updates</button>
     </div>
 
     <div style="margin-top:16px;">
-      <button id="changeBgBtn" class="btn">Change Factory Mood 🌈</button>
+      <button id="changeBgBtn" class="nav item btn">Change Factory Mood 🌈</button>
     </div>
 
-    <div id="dateTimeBlock" class="sidebar-datetime" style="margin-top:16px;">
-      <p id="nowText">Loading date & time...</p>
+    <div style="margin-top:16px;">
+      <button id="themeToggle" class="nav item btn">Switch to Night Mode 🌙</button>
     </div>
+
+    <li class="sound-menu-item" tabindex="0">
+      <div id="magicChoco" class="magic-sound">🎵</div>
+      <button id="soundButton" class="btn">Play Sound</button>
+      <audio id="wonkaSound" src="magic sound.mp3"></audio>
+      <div id="magicChoco" class="magic-sound">🎵</div>
+    </li>
+
+    <div class="time-box">
+    <button id="showTimeBtn" class="btn">Show Current Time</button>
+    <p id="timeDisplay">--:--:--</p>
+  </div>
 
   </aside>
 
@@ -99,7 +114,7 @@
       </div>
     </div>
 
-<!-- Gallery -->
+    <!-- Gallery -->
     <div class="about-box">
       <h2 class="section-title">Willy Wonka Through the Years</h2>
       <div class="gallery">
@@ -111,6 +126,30 @@
         <figure> <img src="https://static.wikia.nocookie.net/timburton/images/b/b1/WillyWonka.jpg" alt="Oompa Loompas"> <figcaption>Burton Style</figcaption> </figure> 
       </div>
     </div>
+
+    <!-- Random quoute section -->
+    <div class="about-box">
+    <div class="quote-section">
+      <h2>Wonka’s Fun Facts</h2>
+      <p id="factArea">Click the button to see a random fact!</p>
+
+      <div id="factList" style="display: none;">
+        <p>Roald Dahl wrote “Charlie and the Chocolate Factory” in 1964 — it became one of the most beloved children’s books in the world.</p>
+        <p>Willy Wonka’s first on-screen appearance was in 1971, played by Gene Wilder in a purple velvet coat and top hat.</p>
+        <p>The golden ticket idea was inspired by Dahl’s love of mystery and his dislike of boring chocolate bars.</p>
+        <p>In Tim Burton’s 2005 remake, Johnny Depp’s portrayal of Wonka was inspired partly by children’s TV hosts and pop icons.</p>
+        <p>Roald Dahl himself worked at Cadbury’s chocolate company — it gave him the idea for a secret chocolate factory!</p>
+        <p>The Oompa-Loompas were originally described as African pygmies — later changed to avoid controversy.</p>
+        <p>Every golden ticket in the story promised a lifetime supply of chocolate — the ultimate childhood dream!</p>
+        <p>Gene Wilder improvised many of his lines, adding his quirky and unpredictable energy to the character.</p>
+        <p>In the book, Charlie’s family was originally supposed to include more children — but Dahl simplified it later.</p>
+        <p>The chocolate river in the 1971 film was actually made from water, chocolate powder, and cream — and it spoiled fast!</p>
+      </div>
+
+      <button id="factButton" class="btn">Get New Fact </button>
+    </div>
+    </div>
+
 
     <!-- FAQ -->
     <div class="about-box">
@@ -156,6 +195,69 @@
         <button class="btn" type="submit">Send Golden Ticket</button>
       </form>
     </div>
+
+    <!-- Multi-Step Form -->
+    <div class="about-box">
+      <h2 class="section-title">Join the Factory Crew</h2>
+      <form id="multiStepForm" class="multi-form" novalidate>
+        <!-- Step 1 -->
+        <div class="form-step active-step" data-step="1">
+          <label for="crewName">Your Name</label>
+          <input type="text" id="crewName" name="crewName" placeholder="Charlie Bucket">
+
+          <label for="crewAge">Your Age</label>
+          <input type="number" id="crewAge" name="crewAge" placeholder="12">
+
+          <button type="button" class="btn next-btn">Next</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" data-step="2">
+          <label for="favoriteSweet">Your Favorite Candy</label>
+          <input type="text" id="favoriteSweet" name="favoriteSweet" placeholder="Everlasting Gobstopper">
+
+          <label for="dreamRole">Your Dream Role in the Factory</label>
+          <input type="text" id="dreamRole" name="dreamRole" placeholder="Chocolate Taster 🍫">
+
+          <div class="form-navigation">
+            <button type="button" class="btn back-btn">Back</button>
+            <button type="button" class="btn next-btn">Next</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" data-step="3">
+          <p>Review your information, and if everything looks delicious — submit your form!</p>
+          
+          <div class="review-box">
+            <p><strong>Name:</strong> <span id="reviewName"></span></p>
+            <p><strong>Age:</strong> <span id="reviewAge"></span></p>
+            <p><strong>Favorite Candy:</strong> <span id="reviewSweet"></span></p>
+            <p><strong>Dream Role:</strong> <span id="reviewRole"></span></p>
+          </div>
+          
+          <div class="form-navigation">
+            <button type="button" class="btn back-btn">Back</button>
+            <button type="submit" class="btn">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- Rating Section -->
+    <div class="about-box">
+      <h2 class="section-title">Rate Willy Wonka’s World</h2>
+      <div class="rating-section" style="text-align:center; font-size:28px; color:#ddd;">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+      </div>
+      <p id="ratingMessage" style="text-align:center; margin-top:10px; color:white;">Click a star to rate!</p>
+    </div>
+
 
   </main>
 

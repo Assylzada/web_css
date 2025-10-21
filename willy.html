@@ -23,7 +23,7 @@
           <span>Wonka Factory</span>
         </div>
     
-        <div class="menu">
+        <div class="menu" id="mainMenu">
           <a href="#" class="active">Home</a>
           <a href="index.html">About</a>
           <a href="movies.html">Movies</a>
@@ -38,6 +38,14 @@
     <section class="hero">
       <div>
         <h2>Welcome to Willy Wonka’s Magical World</h2>
+
+        <button id="confettiBtn" class="wonka-btn">Celebrate!</button>
+        <div id="confettiContainer"></div>
+
+        <audio id="confettiSound" preload="auto">
+          <source src="magic sound.mp3" type="audio/mpeg">
+        </audio>
+
         <p>Chocolate, gold and starlight. A factory where magic and luxury meet in every detail.</p>
         <a href="#shop" class="btn">Visit Shop</a>
         <div class="ticket">
@@ -110,62 +118,89 @@
           <div id="datetime"></div>
           <h3>Change Background Color</h3>
           <button id="colorBtn">Change Color</button>
+          <button id="themeToggle" >🌞 Toggle Day/Night</button>
     </aside>
+
     </section>
 
+
     <section id="gallery" class="gallery-section">
-      <h2>Magic Moments Gallery</h2>
-      <div class="gallery">
-        <div class="gallery-item"><img src="photo/bignightout.png" alt=""><div class="caption">Big Night Out</div></div>
-        <div class="gallery-item"><img src="photo/silver.png" alt=""><div class="caption">Silver Lightning</div></div>
-        <div class="gallery-item"><img src="photo/fourty.png" alt=""><div class="caption">Forty Second Sweet</div></div>
-        <div class="gallery-item"><img src="photo/giraffe.png" alt=""><div class="caption">Macaroon</div></div>
-        <div class="gallery-item"><img src="photo/mint.png" alt=""><div class="caption">Mint Bar</div></div>
-        <div class="gallery-item"><img src="photo/hair.png" alt=""><div class="caption">Hair Repair Eclair</div></div>
-        <div class="gallery-item"><img src="photo/wonk.png" alt=""><div class="caption">Wonka</div></div>
-        <div class="gallery-item"><img src="photo/bar.png" alt=""><div class="caption">Wonka Bar</div></div>
-        <div class="gallery-item"><img src="photo/cup.png" alt=""><div class="caption">Cupcakes</div></div>
-        <div class="gallery-item"><img src="photo/cake.png" alt=""><div class="caption">Chocolate cake</div></div>
-        <div class="gallery-item"><img src="photo/cookies.png" alt=""><div class="caption">Cookies</div></div>
-        <div class="gallery-item"><img src="photo/cake2.png" alt=""><div class="caption">White chocolate cake</div></div>
-      </div>
-    </section>
+    <h2>Magic Moments Gallery</h2>
+    <div class="gallery" id="galleryContainer">
+      <div class="gallery-item"><img src="photo/bignightout.png" alt=""><div class="caption">Big Night Out</div></div>
+      <div class="gallery-item"><img src="photo/silver.png" alt=""><div class="caption">Silver Lightning</div></div>
+      <div class="gallery-item"><img src="photo/fourty.png" alt=""><div class="caption">Forty Second Sweet</div></div>
+    </div>
+    <button id="loadMoreBtn" class="load-more">🍫 Load More Magic</button>
+  </section>
+
+
 <br>
     <div class="container2">
       <h2>Golden Ticket Form</h2>
+
       <form id="registerForm">
+        <div class="form-step active">
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" required>
+          <button type="button" class="next">Next →</button>
+        </div>
 
-      <label for="fullName">Full Name:</label>
-      <input type="text" id="fullName" required>
+        <div class="form-step">
+          <label for="passport">Ticket Number:</label>
+          <input type="text" id="passport" required placeholder="e.g., AB1234">
+          <div class="buttons">
+            <button type="button" class="back">← Back</button>
+            <button type="button" class="next">Next →</button>
+          </div>
+        </div>
 
-      <label for="passport">Ticket Number:</label>
-      <input type="text" id="passport" required placeholder="e.g., AB1234">
+        <div class="form-step">
+          <label for="email">Email:</label>
+          <input type="email" id="email" required>
+          <div class="buttons">
+            <button type="button" class="back">← Back</button>
+            <button type="button" class="next">Next →</button>
+          </div>
+        </div>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" required>
+        <div class="form-step">
+          <label for="test_date">Date:</label>
+          <input type="date" id="test_date">
+          <div class="buttons">
+            <button type="button" class="back">← Back</button>
+            <button type="button" class="next">Next →</button>
+          </div>
+        </div>
 
-      <label for="test_date">Date:</label>
-      <input type="date" id="test_date">
+        <div class="form-step">
+          <label for="city">Your City:</label>
+          <select id="city" name="city" required>
+            <option value="">--Select City--</option>
+            <option>Almaty</option>
+            <option>Astana</option>
+            <option>Shymkent</option>
+            <option>Aktobe</option>
+            <option>Aktau</option>
+            <option>Atyrau</option>
+            <option>Pavlodar</option>
+            <option>Semey</option>
+            <option>Oral</option>
+            <option>Turkistan</option>
+            <option>Oskemen</option>
+          </select>
+          <div class="buttons">
+            <button type="button" class="back">← Back</button>
+            <button type="submit">✨ Register</button>
+          </div>
+        </div>
+      </form>
 
-      <label for="city">Your City:</label>
-      <select id="city" name="city" required>
-        <option value="">--Select City--</option>
-        <option value="Almaty">Almaty</option>
-        <option value="Astana">Astana</option>
-        <option value="Shymkent">Shymkent</option>
-        <option value="Aktobe">Aktobe</option>
-        <option value="Aktau">Aktau</option>
-        <option value="Atyrau">Atyrau</option>
-        <option value="Pavlodar">Pavlodar</option>
-        <option value="Semey">Semey</option>
-        <option value="Oral">Oral</option>
-        <option value="Turkistan">Turkistan</option>
-        <option value="Oskemen">Oskemen</option>
-      </select>
+      <div id="successMsg" class="hidden">
+        🎉 Thank you, your Golden Ticket has been registered!
+      </div>
+    </div>
 
-      <button type="submit">Register</button>
-        
-    </form>
 
     <button id="openPopup">Subscribe</button>
 
@@ -192,6 +227,62 @@
         <div class="answer">Golden Tickets are five special passes hidden in Wonka candy bars, which grant the finder and one family member a private tour of Willy Wonka's mysterious factory.</div>
       </div>
     </div>
+
+      
+    <!-- 🍫 WONKA INTERACTIVE EXPERIENCE -->
+
+    <section id="wonkaInteractive" class="wonka-section">
+      <h2>✨ Interactive Wonka Experience ✨</h2>
+
+      <!-- 1️⃣ Star Rating -->
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+      </div>
+      <p id="ratingMessage"></p>
+
+      <!-- 3️⃣ Random Quote -->
+      <button id="quoteBtn" class="wonka-btn">Get Random Wonka Quote</button>
+      <p id="quoteArea" class="quote"></p>
+
+      <!-- 4️⃣ Product Filter -->
+      <div class="filter-area">
+        <label for="categorySelect">🍭 Filter by category:</label>
+        <select id="categorySelect">
+          <option value="all">All</option>
+          <option value="chocolate">Chocolate</option>
+          <option value="candy">Candy</option>
+          <option value="gum">Gum</option>
+        </select>
+      </div>
+
+      <br>
+
+      <div id="productContainer" class="shop">
+        <div class="product" data-category="chocolate">
+          <img src="photo/bignightout.png" alt="Wonka Bar" class="product-img">
+          <h3>Wonka Bar 🍫</h3>
+        </div>
+
+        <div class="product" data-category="candy">
+          <img src="photo/silver.png" alt="Everlasting Gobstopper" class="product-img">
+          <h3>Everlasting Gobstopper 🍬</h3>
+        </div>
+
+        <div class="product" data-category="gum">
+          <img src="photo/giraffe.png" alt="Three-Course Dinner Gum" class="product-img">
+          <h3>Three-Course Dinner Gum 🍇</h3>
+        </div>
+
+        <div class="product" data-category="candy">
+          <img src="photo/bignightout.png" alt="Luminous Lollipops" class="product-img">
+          <h3>Luminous Lollipops 🍭</h3>
+        </div>
+      </div>
+
 
   </main>
 

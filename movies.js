@@ -1,102 +1,263 @@
-// Validation
-const form = document.getElementById("subscribeForm");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirmPassword");
-const errorMsg = document.getElementById("errorMsg");
-if (form) {
- form.addEventListener("submit", function (e) {
- e.preventDefault();
- errorMsg.textContent = "";
- const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
- if (!email.value.match(emailPattern)) {
- errorMsg.textContent = "Please enter a valid email address.";
- return;
- }
- if (password.value.length < 6) {
- errorMsg.textContent = "Password must be at least 6 characters.";
- return;
- }
- if (password.value !== confirmPassword.value) {
- errorMsg.textContent = "Passwords do not match.";
- return;
- }
- alert("Form submitted successfully!");
- form.reset();
- });
-}
-//Accordion
-const faqQuestions = document.querySelectorAll(".faq-question");
-faqQuestions.forEach(q => {
- q.addEventListener("click", () => {
- const parent = q.parentElement;
- parent.classList.toggle("active");
- });
+document.addEventListener("DOMContentLoaded", () => {
+  // Validation
+  const form = document.getElementById("subscribeForm");
+  const email = document.getElementById("email");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmPassword");
+  const errorMsg = document.getElementById("errorMsg");
+
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      errorMsg.textContent = "";
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email.value.match(emailPattern)) {
+        errorMsg.textContent = "Please enter a valid email address.";
+        return;
+      }
+      if (password.value.length < 6) {
+        errorMsg.textContent = "Password must be at least 6 characters.";
+        return;
+      }
+      if (password.value !== confirmPassword.value) {
+        errorMsg.textContent = "Passwords do not match.";
+        return;
+      }
+      alert("Form submitted successfully!");
+      form.reset();
+    });
+  }
+
+  //Accordion
+  const faqQuestions = document.querySelectorAll(".faq-question");
+
+  faqQuestions.forEach(q => {
+    q.addEventListener("click", () => {
+      const parent = q.parentElement;
+      parent.classList.toggle("active");
+    });
+  });
+
+  //Popup + Form Validation
+  const openPopup = document.getElementById("openPopup");
+  const closePopup = document.getElementById("closePopup");
+  const popupForm = document.getElementById("popupForm");
+  const subscribeForm = document.getElementById("subscribeForm");
+
+  openPopup.addEventListener("click", () => {
+    popupForm.style.display = "block";
+  });
+
+  closePopup.addEventListener("click", () => {
+    popupForm.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === popupForm) popupForm.style.display = "none";
+  });
+
+  subscribeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    let emailError = document.getElementById("emailError");
+    let passwordError = document.getElementById("passwordError");
+    let confirmError = document.getElementById("confirmError");
+
+    emailError.textContent = "";
+    passwordError.textContent = "";
+    confirmError.textContent = "";
+
+    let valid = true;
+
+    if (email === "" || !email.includes("@") || !email.includes(".")) {
+      emailError.textContent = "Enter a valid email.";
+      valid = false;
+    }
+
+    if (password.length < 6) {
+      passwordError.textContent = "Password must be at least 6 characters.";
+      valid = false;
+    }
+
+    if (confirmPassword !== password) {
+      confirmError.textContent = "Passwords do not match.";
+      valid = false;
+    }
+
+    if (valid) {
+      alert("Subscription successful!");
+      popupForm.style.display = "none";
+      subscribeForm.reset();
+    }
+  });
+
+  // Change Background Color
+  const colorBtn = document.getElementById("colorBtn");
+  const colors = ["#967BB6", "#ffb6c1", "#ffd580", "#b3ecff", "#c6ffb3", "#fff0b3", "#e6b3ff"];
+  let i = 0;
+
+  if (colorBtn) {
+    colorBtn.addEventListener("click", () => {
+      document.body.style.backgroundColor = colors[i];
+      i = (i + 1) % colors.length;
+    });
+  }
+
+  // --- Star Rating System ---
+  const stars = document.querySelectorAll(".star-rating .star");
+  const ratingResult = document.getElementById("ratingResult");
+
+  if (stars.length > 0) {
+    stars.forEach((star) => {
+      star.addEventListener("click", () => {
+        const value = parseInt(star.getAttribute("data-value"));
+
+        // Сбрасываем выделение
+        stars.forEach(s => s.classList.remove("selected"));
+
+        // Подсвечиваем выбранные звезды
+        for (let i = 0; i < value; i++) {
+          stars[i].classList.add("selected");
+        }
+
+        ratingResult.textContent = `You rated ${value} out of 5 ⭐`;
+      });
+    });
+  }
+
+  // Dynamic Text Change using textContent and innerHTML
+  const messageBtn = document.getElementById("messageBtn");
+  const wonkaMessage = document.getElementById("wonkaMessage");
+
+  if (messageBtn && wonkaMessage) {
+    messageBtn.addEventListener("click", () => {
+      // changing text with textContent
+      wonkaMessage.textContent = "✨ You’ve unlocked Willy Wonka’s golden message! ✨";
+
+      setTimeout(() => {
+        wonkaMessage.innerHTML = "Keep dreaming, chocolate lover 🍫";
+      }, 3000);
+    });
+  }
+
+  // Show Current Time using new Date().toLocaleTimeString()
+  const showTimeBtn = document.getElementById("showTimeBtn");
+  const timeDisplay = document.getElementById("timeDisplay");
+
+  if (showTimeBtn && timeDisplay) {
+    showTimeBtn.addEventListener("click", () => {
+      const currentTime = new Date().toLocaleTimeString();
+      timeDisplay.textContent = `${currentTime}`;
+    });
+  }
+
+    // --- Keyboard Navigation for Menu ---
+    const navItems = document.querySelectorAll(".nav-item");
+    let currentIndex = 0;
+
+    if (navItems.length > 0) {
+      navItems[currentIndex].focus();
+
+      document.addEventListener("keydown", (event) => {
+        if (["ArrowRight", "ArrowLeft", "ArrowDown", "ArrowUp"].includes(event.key)) {
+          event.preventDefault();
+
+          if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+            currentIndex = (currentIndex + 1) % navItems.length;
+          } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+            currentIndex = (currentIndex - 1 + navItems.length) % navItems.length;
+          }
+
+          navItems[currentIndex].focus();
+        }
+      });
+    }
+
+  // --- Multi-Step Form ---
+  const steps = document.querySelectorAll(".form-step");
+  const nextBtns = document.querySelectorAll(".nextBtn");
+  const backBtns = document.querySelectorAll(".backBtn");
+  const multiForm = document.getElementById("wonkaForm");
+  let currentStep = 0;
+
+  function showStep(stepIndex) {
+    steps.forEach((step, index) => {
+      step.classList.toggle("active", index === stepIndex);
+    });
+  }
+
+  nextBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (currentStep < steps.length - 1) {
+        currentStep++;
+        showStep(currentStep);
+      }
+    });
+  });
+
+  backBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+  });
+
+  multiForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Your Golden Ticket request has been submitted!");
+    multiForm.reset();
+    currentStep = 0;
+    showStep(currentStep);
+  });
+
+
+  // --- Time-Based Greeting ---
+  const greetingEl = document.getElementById("greetingMessage");
+  if (!greetingEl) return;
+
+  const hours = new Date().getHours();
+  let greetingText = "";
+
+  if (hours < 12) {
+    greetingText = "Good morning, chocolate dreamer! ☀️";
+  } else if (hours < 18) {
+    greetingText = "Good afternoon, golden ticket seeker! 🍫";
+  } else {
+    greetingText = "Good evening, sweet adventurer! 🌙";
+  }
+
+  greetingEl.textContent = greetingText;
+
+  const playSoundBtn = document.getElementById("playSoundBtn");
+  const notificationSound = document.getElementById("notificationSound");
+
+  playSoundBtn.addEventListener("click", () => {
+    notificationSound.currentTime = 0; 
+    notificationSound.play();
+  });
+
+  // --- Theme Switch ---
+  const themeToggleBtn = document.getElementById("themeToggleBtn");
+  const body = document.body;
+
+  themeToggleBtn.addEventListener("click", () => {
+    body.classList.toggle("night-mode");
+
+    if (body.classList.contains("night-mode")) {
+      themeToggleBtn.textContent = "Switch to Day Mode ☀️";
+    } else {
+      themeToggleBtn.textContent = "Switch to Night Mode 🌙";
+    }
+  });
+
+  magicNote.classList.add("spin-forever");
 });
-//Popup + Form Validation
-const openPopup = document.getElementById("openPopup");
-const closePopup = document.getElementById("closePopup");
-const popupForm = document.getElementById("popupForm");
-const subscribeForm = document.getElementById("subscribeForm");
-openPopup.addEventListener("click", () => {
- popupForm.style.display = "block";
-});
-closePopup.addEventListener("click", () => {
- popupForm.style.display = "none";
-});
-window.addEventListener("click", (e) => {
- if (e.target === popupForm) popupForm.style.display = "none";
-});
-subscribeForm.addEventListener("submit", (e) => {
- e.preventDefault();
- let email = document.getElementById("email").value.trim();
- let password = document.getElementById("password").value;
- let confirmPassword = document.getElementById("confirmPassword").value;
- let emailError = document.getElementById("emailError");
- let passwordError = document.getElementById("passwordError");
- let confirmError = document.getElementById("confirmError");
- emailError.textContent = "";
- passwordError.textContent = "";
- confirmError.textContent = "";
- let valid = true;
- if (email === "" || !email.includes("@") || !email.includes(".")) {
- emailError.textContent = "Enter a valid email.";
- valid = false;
- }
- if (password.length < 6) {
- passwordError.textContent = "Password must be at least 6 characters.";
- valid = false;
- }
- if (confirmPassword !== password) {
- confirmError.textContent = "Passwords do not match.";
- valid = false;
- }
- if (valid) {
- alert("Subscription successful!");
- popupForm.style.display = "none";
- subscribeForm.reset();
- }
-});
-// Change Background Color
-const colorBtn = document.getElementById("colorBtn");
-const colors = ["#967BB6", "#ffb6c1", "#ffd580", "#b3ecff", "#c6ffb3",
-"#fff0b3", "#e6b3ff"];
-let i = 0;
-if (colorBtn) {
- colorBtn.addEventListener("click", () => {
- document.body.style.backgroundColor = colors[i];
- i = (i + 1) % colors.length;
- });
-}
-// Display Current Date and Time
-const dateTimeDisplay = document.getElementById("dateTime");
-function updateDateTime() {
- const now = new Date();
- const options = {
- month: "long", day: "numeric", year: "numeric",
- hour: "2-digit", minute: "2-digit", second: "2-digit"
- };
- dateTimeDisplay.textContent = now.toLocaleString("en-US", options);
-}
-setInterval(updateDateTime, 1000);
-updateDateTime();
+
