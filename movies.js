@@ -1,3 +1,6 @@
+$(document).ready(function() {
+  console.log("jQuery is ready!");
+});
 document.addEventListener("DOMContentLoaded", () => {
   // Validation
   const form = document.getElementById("subscribeForm");
@@ -236,28 +239,90 @@ document.addEventListener("DOMContentLoaded", () => {
 
   greetingEl.textContent = greetingText;
 
-  const playSoundBtn = document.getElementById("playSoundBtn");
-  const notificationSound = document.getElementById("notificationSound");
+  // 🪄 Task 1: Real-time Gallery Search Filter
+  $("#gallerySearch").on("keyup", function() {
+    let value = $(this).val().toLowerCase();
 
-  playSoundBtn.addEventListener("click", () => {
-    notificationSound.currentTime = 0; 
-    notificationSound.play();
+    $(".gallery-item").filter(function() {
+      $(this).toggle(
+        $(this).text().toLowerCase().includes(value) ||
+        $(this).find("img").attr("alt").toLowerCase().includes(value)
+      );
+    });
   });
 
-  // --- Theme Switch ---
-  const themeToggleBtn = document.getElementById("themeToggleBtn");
-  const body = document.body;
+  const questions = [];
+  $(".faq-question").each(function () {
+    questions.push($(this).text());
+  });
 
-  themeToggleBtn.addEventListener("click", () => {
-    body.classList.toggle("night-mode");
+  // --- Автоподсказки ---
+  $("#faqSearch").on("keyup", function () {
+    const query = $(this).val().toLowerCase();
+    $("#suggestions").empty();
 
-    if (body.classList.contains("night-mode")) {
-      themeToggleBtn.textContent = "Switch to Day Mode ☀️";
-    } else {
-      themeToggleBtn.textContent = "Switch to Night Mode 🌙";
+    if (query.length === 0) {
+      removeHighlights();
+      $(".faq-item").show();
+      return;
     }
+
+    const matches = questions.filter(q => q.toLowerCase().includes(query));
+    matches.forEach(match => {
+      $("#suggestions").append(`<li>${match}</li>`);
+    });
+
+    filterFAQ(query);
+    highlightMatches(query);
   });
 
-  magicNote.classList.add("spin-forever");
+  // --- Клик по подсказке ---
+  $(document).on("click", "#suggestions li", function () {
+    const text = $(this).text();
+    $("#faqSearch").val(text);
+    $("#suggestions").empty();
+
+    filterFAQ(text.toLowerCase());
+    highlightMatches(text.toLowerCase());
+  });
+
+  // --- Фильтрация FAQ ---
+  function filterFAQ(query) {
+    $(".faq-item").each(function () {
+      const q = $(this).find(".faq-question").text().toLowerCase();
+      const a = $(this).find(".faq-answer").text().toLowerCase();
+      $(this).toggle(q.includes(query) || a.includes(query));
+    });
+  }
+
+  // --- Подсветка совпадений ---
+  function highlightMatches(query) {
+    removeHighlights();
+    if (!query) return;
+
+    const regex = new RegExp(`(${query})`, "gi");
+
+    $(".faq-question, .faq-answer").each(function () {
+      const text = $(this).text();
+      const newHtml = text.replace(regex, '<span class="highlight">$1</span>');
+      $(this).html(newHtml);
+    });
+  }
+
+  // --- Удаление подсветки ---
+  function removeHighlights() {
+    $(".highlight").each(function () {
+      $(this).replaceWith($(this).text());
+    });
+  }
+
+  // --- Task 4: Colorful Scroll Progress Bar ---
+  document.addEventListener("scroll", function() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById("scrollBar").style.width = scrollPercent + "%";
+  });
+
 });
 

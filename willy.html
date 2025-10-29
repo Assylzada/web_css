@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Willy Wonka — Magical Factory</title>
   <link rel="stylesheet" href="style2.css">
+  <!-- Script -->
+  <script src="willy.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
   <div class="bubbles">
@@ -92,33 +95,42 @@
         </div>
       </div>
       <aside id="shop" class="shop">
+      <input type="text" id="shopSearch" placeholder="🔍 Search chocolates...">
       <h3>Shop</h3>
-      <div class="product">
-        <img src="photo/bar.png" alt="Truffle"/>
-        <div>
-          <strong>Premium milk chocolate Wonka</strong>
-          <div class="price">$12</div>
+
+        <div class="shop-item">
+          <img src="photo/bar.png" alt="Truffle"/>
+          <div>
+            <strong>Premium milk chocolate Wonka</strong>
+            <div class="price">$12</div>
+          </div>
         </div>
-      </div>
-      <div class="product">
-        <img src="photo/silver.png" alt="Ticket"/>
-        <div>
-          <strong>Silver Lightning</strong>
-          <div class="price">$19</div>
+
+        <div class="shop-item">
+          <img src="photo/silver.png" alt="Ticket"/>
+          <div>
+            <strong>Silver Lightning</strong>
+            <div class="price">$19</div>
+          </div>
         </div>
-      </div>
-      <div class="product">
-        <img src="photo/bignightout.png" alt="Bar"/>
-        <div>
-          <strong>Big night out</strong>
-          <div class="price">$9</div>
+
+        <div class="shop-item">
+          <img src="photo/bignightout.png" alt="Bar"/>
+          <div>
+            <strong>Big night out</strong>
+            <div class="price">$9</div>
+          </div>
         </div>
-      </div>
+        
           <h3>Current Date and Time</h3>
           <div id="datetime"></div>
           <h3>Change Background Color</h3>
           <button id="colorBtn">Change Color</button>
           <button id="themeToggle" >🌞 Toggle Day/Night</button>
+          <div id="wonkaStats">
+            <div class="counter" data-target="1000">0</div>
+            <p>🍬 Magical visitors</p>
+          </div>
     </aside>
 
     </section>
@@ -199,10 +211,8 @@
       <div id="successMsg" class="hidden">
         🎉 Thank you, your Golden Ticket has been registered!
       </div>
+      <button id="openPopup">Subscribe</button>
     </div>
-
-
-    <button id="openPopup">Subscribe</button>
 
     <div id="popup" class="popup">
       <div class="popup-content">
@@ -262,26 +272,26 @@
       <br>
 
       <div id="productContainer" class="shop">
-        <div class="product" data-category="chocolate">
-          <img src="photo/bignightout.png" alt="Wonka Bar" class="product-img">
-          <h3>Wonka Bar 🍫</h3>
-        </div>
-
-        <div class="product" data-category="candy">
-          <img src="photo/silver.png" alt="Everlasting Gobstopper" class="product-img">
-          <h3>Everlasting Gobstopper 🍬</h3>
-        </div>
-
-        <div class="product" data-category="gum">
-          <img src="photo/giraffe.png" alt="Three-Course Dinner Gum" class="product-img">
-          <h3>Three-Course Dinner Gum 🍇</h3>
-        </div>
-
-        <div class="product" data-category="candy">
-          <img src="photo/bignightout.png" alt="Luminous Lollipops" class="product-img">
-          <h3>Luminous Lollipops 🍭</h3>
-        </div>
+      <div class="product-card" data-category="chocolate">
+        <img src="photo/bignightout.png" alt="Wonka Bar" class="product-img">
+        <h3>Wonka Bar 🍫</h3>
       </div>
+
+      <div class="product-card" data-category="candy">
+        <img src="photo/silver.png" alt="Everlasting Gobstopper" class="product-img">
+        <h3>Everlasting Gobstopper 🍬</h3>
+      </div>
+
+      <div class="product-card" data-category="gum">
+        <img src="photo/giraffe.png" alt="Three-Course Dinner Gum" class="product-img">
+        <h3>Three-Course Dinner Gum 🍇</h3>
+      </div>
+
+      <div class="product-card" data-category="candy">
+        <img src="photo/bignightout.png" alt="Luminous Lollipops" class="product-img">
+        <h3>Luminous Lollipops 🍭</h3>
+      </div>
+    </div>
 
 
   </main>
@@ -289,9 +299,6 @@
   <footer>
     © Willy Wonka Factory — demo site, no real payments
   </footer>
-  
-  <!-- Script -->
-  <script src="willy.js" defer></script>
 
 </body>
 </html>

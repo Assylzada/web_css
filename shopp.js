@@ -316,3 +316,163 @@ quoteBtn.addEventListener('click', () => {
     quoteArea.style.opacity = 1;
   }, 200);
 });
+
+
+
+$(document).ready(function () {
+  console.log("✅ jQuery is ready!");
+
+  /* ------------------------------------
+     🧩 1. Real-Time Product Search + Filter
+  ------------------------------------ */
+  // Add a live search bar above products
+  $(".filter-bar").after(`
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="🔍 Search chocolates or candies..." />
+      <ul id="autoSuggestions" class="suggestions-list"></ul>
+    </div>
+  `);
+
+  const productNames = $(".card .name")
+    .map(function () {
+      return $(this).text().trim();
+    })
+    .get();
+
+  // Real-time search filtering
+  $("#searchInput").on("keyup", function () {
+    const keyword = $(this).val().toLowerCase();
+    $(".card").each(function () {
+      const match = $(this).text().toLowerCase().includes(keyword);
+      $(this).toggle(match);
+    });
+
+    // Autocomplete suggestions
+    const matched = productNames.filter((n) =>
+      n.toLowerCase().includes(keyword)
+    );
+    const suggestions = matched
+      .slice(0, 5)
+      .map((n) => `<li>${n}</li>`)
+      .join("");
+    $("#autoSuggestions").html(suggestions || "");
+  });
+
+  // Click suggestion → autofill
+  $(document).on("click", "#autoSuggestions li", function () {
+    $("#searchInput").val($(this).text());
+    $("#autoSuggestions").empty();
+    $("#searchInput").trigger("keyup");
+  });
+
+  /* ------------------------------------
+     💡 2. Search Highlighting
+  ------------------------------------ */
+  $("#searchInput").on("input", function () {
+    const term = $(this).val().trim();
+    $(".desc").each(function () {
+      const text = $(this).text();
+      if (term) {
+        const regex = new RegExp(`(${term})`, "gi");
+        const highlighted = text.replace(regex, "<mark>$1</mark>");
+        $(this).html(highlighted);
+      } else {
+        $(this).text(text);
+      }
+    });
+  });
+
+  /* ------------------------------------
+     🧭 3. Scroll Progress Bar
+  ------------------------------------ */
+  $("body").append(`
+    <div id="scrollProgress"><div id="scrollBar"></div></div>
+  `);
+
+  $(window).on("scroll", function () {
+    const scrollTop = $(window).scrollTop();
+    const docHeight = $(document).height() - $(window).height();
+    const percent = (scrollTop / docHeight) * 100;
+    $("#scrollBar").css("width", percent + "%");
+  });
+
+  /* ------------------------------------
+     🔢 4. Animated Number Counter
+  ------------------------------------ */
+  $(".best-items").before(`<div id="counter" class="counter">0 users 🍫</div>`);
+  let num = 0;
+  const target = 1000;
+  const step = 25;
+  const interval = setInterval(() => {
+    num += step;
+    $("#counter").text(`${num}+ users 🍫`);
+    if (num >= target) clearInterval(interval);
+  }, 40);
+
+  /* ------------------------------------
+     ⏳ 5. Loading Spinner on Submit
+  ------------------------------------ */
+  $("#checkoutForm").on("submit", function (e) {
+    e.preventDefault();
+    const btn = $(this).find("button[type='submit']");
+    btn.prop("disabled", true).html(`<span class="spinner"></span> Please wait…`);
+
+    setTimeout(() => {
+      btn.prop("disabled", false).text("Place Order");
+      showToast("✅ Order placed successfully!");
+    }, 1800);
+  });
+
+  /* ------------------------------------
+     🔔 6. Toast Notification System
+  ------------------------------------ */
+  function showToast(message) {
+    const toast = $(`<div class="toast">${message}</div>`);
+    $("body").append(toast);
+    setTimeout(() => toast.addClass("show"), 100);
+    setTimeout(() => toast.removeClass("show"), 3000);
+    setTimeout(() => toast.remove(), 3500);
+  }
+
+  $(".btn-primary").on("click", function (e) {
+    e.preventDefault();
+    showToast("🍬 Item added to cart!");
+  });
+
+  /* ------------------------------------
+     📋 7. Copy to Clipboard Button
+  ------------------------------------ */
+  $(".note").after(`
+    <div class="copy-box">
+      <p id="copyText">Free local pickup on orders over $40.</p>
+      <button id="copyBtn">Copy</button>
+    </div>
+  `);
+
+  $("#copyBtn").on("click", function () {
+    const text = $("#copyText").text();
+    navigator.clipboard.writeText(text);
+    $(this).text("✅ Copied!");
+    setTimeout(() => $(this).text("Copy"), 2000);
+  });
+
+  /* ------------------------------------
+     🖼️ 8. Image Lazy Loading
+  ------------------------------------ */
+  $("img").each(function () {
+    const src = $(this).attr("src");
+    $(this).attr("data-src", src).removeAttr("src");
+  });
+
+  function lazyLoad() {
+    $("img[data-src]").each(function () {
+      if ($(this).offset().top < $(window).scrollTop() + $(window).height()) {
+        $(this).attr("src", $(this).attr("data-src"));
+        $(this).removeAttr("data-src");
+      }
+    });
+  }
+
+  $(window).on("scroll", lazyLoad);
+  lazyLoad();
+});

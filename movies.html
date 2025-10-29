@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Willy Wonka Movies</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link rel="stylesheet" href="movies.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<div id="scrollBar"></div>
 
   <!-- Header -->
   <div id="top-banner" class="header-section">
@@ -51,6 +53,11 @@
     </div>
   </div>
 
+
+  <!-- Gallery Search -->
+  <div class="gallery-search">
+    <input type="text" id="gallerySearch" placeholder="Search Willy Wonka by year or name...">
+  </div>
   <!-- Gallery -->
   <div class="gallery-container">
     <div class="gallery-item"><img src="https://i.ebayimg.com/images/g/bK4AAOSwjyNiT4~T/s-l1200.jpg" alt="1971 Poster"><span class="caption">1971 Poster</span></div>
@@ -63,8 +70,13 @@
     <div class="gallery-item"><img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2023-12/willy-wonka-mc-231211-01-b60c9a.jpg" alt="Chalamet"><span class="caption">Chalamet</span></div>
   </div>
 
+
   <div class="faq-section container">
     <h2>Frequently Asked Questions</h2>
+    <div class="faq-search">
+      <input type="text" id="faqSearch" placeholder="Search for a question...">
+      <ul id="suggestions"></ul>
+    </div>
     <div class="faq-item">
       <h3 class="faq-question">Who created Willy Wonka?</h3>
       <p class="faq-answer">Willy Wonka was created by author Roald Dahl in his famous book "Charlie and the Chocolate Factory".</p>
@@ -126,23 +138,6 @@
     <p id="timeDisplay">--:--:--</p>
   </div>
 
-  <!-- --- Play Sound + Theme Switch Container --- -->
-  <div class="sound-theme-box">
-    <h2>Sound & Theme Controls</h2>
-
-    <!-- Play Sound Section -->
-    <div class="sound-section">
-      <button id="playSoundBtn" class="btn">Play Notification Sound<div id="magicChoco" class="magic-note">🎵</div>
-      </button>
-      <audio id="notificationSound" src="magic sound.mp3"></audio>
-    </div>
-
-    <!-- Theme Switch Section -->
-    <div class="theme-switch-section">
-      <button id="themeToggleBtn" class="btn">Switch to Night Mode 🌙</button>
-    </div>
-  </div>
-
     <!-- Movie Rating Section -->
   <div class="rating-section container">
     <h2>✨ Rate Willy Wonka’s Magic ✨</h2>
@@ -198,6 +193,6 @@
   </div>
 
   <!-- Script -->
-  <script src="movies.js" defer></script>
+  <script src="movies.js"></script>
 </body>
 </html>

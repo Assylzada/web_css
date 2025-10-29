@@ -1,6 +1,7 @@
-
+$(document).ready(function () {
+  console.log("jQuery is ready!");
+});
 document.addEventListener("DOMContentLoaded", () => {
-
   const form = document.getElementById("contactForm");
   if (form) {
     form.addEventListener("submit", (event) => {
@@ -9,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const name = document.getElementById("name");
       const email = document.getElementById("email");
       const message = document.getElementById("message");
+      const submitBtn = form.querySelector(".btn");
 
       // remove previous errors
       document.querySelectorAll(".error-text").forEach(e => e.remove());
@@ -45,11 +47,40 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (isValid) {
-        // Simulate successful submission
-        alert("Golden Ticket sent successfully!");
-        form.reset();
+        // 🌀 Task 6: Loading Spinner on Submit
+        submitBtn.disabled = true;
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = `<span class="spinner"></span> Please wait...`;
+
+        // Симуляция "отправки на сервер"
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          form.reset();
+
+          // 🎉 Task 7: Show Notification after success
+          showNotification("🎉 Golden Ticket sent successfully!");
+        }, 2500);
       }
     });
+  }
+
+  // 🪄 Task 7: Notification System
+
+  function showNotification(message) {
+    const container = document.getElementById("notification-container");
+
+    // Создаём блок уведомления
+    const notification = document.createElement("div");
+    notification.classList.add("notification");
+    notification.textContent = message;
+
+    container.appendChild(notification);
+
+    // Удаляем после исчезновения
+    setTimeout(() => {
+      notification.remove();
+    }, 4000);
   }
 
   const faqQuestions = document.querySelectorAll(".faq-question");
@@ -203,22 +234,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Theme Toggle (Day/Night Switch) ---
-  const themeToggle = document.getElementById("themeToggle");
-  const body = document.body;
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      body.classList.toggle("night-mode");
-
-      if (body.classList.contains("night-mode")) {
-        themeToggle.textContent = "Switch to Day Mode ☀️";
-      } else {
-        themeToggle.textContent = "Switch to Night Mode 🌙";
-      }
-    });
-  }
-
    // --- Wonka Random Fact Generator ---
   const factArea = document.querySelector("#factArea");
   const factButton = document.querySelector("#factButton");
@@ -342,17 +357,191 @@ document.addEventListener("DOMContentLoaded", () => {
   greetingEl.textContent = greetingText;
 
 
-  // --- Play Magical Sound (Sidebar) ---
-  const soundButton = document.getElementById("soundButton");
-  const wonkaSound = document.getElementById("wonkaSound");
 
-  if (soundButton && wonkaSound) {
-    soundButton.addEventListener("click", () => {
-      wonkaSound.currentTime = 0;
-      wonkaSound.play();
+  // --- Real-time Gallery Search for "Willy Wonka Through the Years" ---
+  const searchInput = document.getElementById("wonkaSearch");
+  const figures = document.querySelectorAll(".gallery figure");
+
+  searchInput.addEventListener("keyup", function() {
+    const value = searchInput.value.toLowerCase().trim();
+
+    figures.forEach(function(fig) {
+      const caption = fig.textContent.toLowerCase();
+      if (caption.includes(value) || value === "") {
+        fig.style.display = "inline-block";
+      } else {
+        fig.style.display = "none";
+      }
+    });
+  });
+
+  // --- Task 2: Autocomplete Search Suggestions ---
+  const questions = [];
+    $(".faq-question").each(function () {
+      questions.push($(this).text());
+    });
+
+    $("#faqSearch").on("keyup", function () {
+      const query = $(this).val().toLowerCase();
+      $("#suggestions").empty();
+
+      if (query.length === 0) return;
+
+      const matches = questions.filter(q => q.toLowerCase().includes(query));
+
+      matches.forEach(match => {
+        $("#suggestions").append(`<li>${match}</li>`);
+      });
+    });
+
+    // Когда кликаем на подсказку — заполняем поле и фильтруем FAQ
+    $(document).on("click", "#suggestions li", function () {
+      const text = $(this).text();
+      $("#faqSearch").val(text);
+      $("#suggestions").empty();
+
+      $(".faq-item").each(function () {
+        const q = $(this).find(".faq-question").text().toLowerCase();
+        $(this).toggle(q.includes(text.toLowerCase()));
+      });
+    });
+
+    // При вводе — фильтруем FAQ в реальном времени
+    $("#faqSearch").on("input", function () {
+      const val = $(this).val().toLowerCase();
+      $(".faq-item").each(function () {
+        const q = $(this).find(".faq-question").text().toLowerCase();
+        $(this).toggle(q.includes(val));
+      });
+    });
+
+// --- Task 3: Search Highlighting for FAQ section ---
+  const faqSearch = document.getElementById("faqSearch");
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqSearch.addEventListener("keyup", function() {
+    const keyword = faqSearch.value.trim();
+    const regex = new RegExp(`(${keyword})`, "gi");
+
+    faqItems.forEach(item => {
+      const question = item.querySelector(".faq-question");
+      const answer = item.querySelector(".faq-answer");
+
+      // Remove previous highlights
+      question.innerHTML = question.textContent;
+      answer.innerHTML = answer.textContent;
+
+      // Apply new highlights if keyword exists
+      if (keyword !== "") {
+        question.innerHTML = question.textContent.replace(regex, "<mark>$1</mark>");
+        answer.innerHTML = answer.textContent.replace(regex, "<mark>$1</mark>");
+      }
+    });
+  });
+
+ // --- Task 4: Colorful Scroll Progress Bar ---
+  document.addEventListener("scroll", function() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById("scrollBar").style.width = scrollPercent + "%";
+  });
+
+
+  // 🪄 Task 5: Animated Number Counter
+  const counters = document.querySelectorAll('.count');
+  const speed = 150; // скорость анимации
+
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText;
+        const increment = target / speed;
+
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment);
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+  };
+
+  // Запуск анимации при появлении в зоне видимости
+  const sidebar = document.querySelector('.sidebar-counter');
+  if (sidebar) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.disconnect();
+        }
+      });
+    });
+    observer.observe(sidebar);
+}
+
+
+    $(document).ready(function () {
+    const tooltip = $('#copy-tooltip');
+
+    $('.copy-btn').on('click', function () {
+      const card = $(this).closest('.card');
+      const textToCopy = `${card.find('h3').text()} - ${card.find('p').text()}`;
+
+      // Create a temporary hidden textarea for copying
+      const temp = $('<textarea>');
+      $('body').append(temp);
+      temp.val(textToCopy).select();
+      document.execCommand('copy');
+      temp.remove();
+
+      // Trigger a custom copy event
+      $(this).trigger('copy');
+    });
+
+    // When copy event happens
+    $('.copy-btn').on('copy', function () {
+      const btn = $(this);
+      const originalText = btn.text();
+
+      // Change button text
+      btn.text('✓ Copied');
+
+      // Show tooltip
+      tooltip.addClass('show');
+
+      // Restore button and hide tooltip
+      setTimeout(() => {
+        btn.text(originalText);
+        tooltip.removeClass('show');
+      }, 1500);
+    });
+  });
+
+
+  // 🪄 Task 9: Lazy Loading Images
+  function lazyLoadImages() {
+    $(".lazy-img").each(function () {
+      const img = $(this);
+      if (img.attr("src")) return; // уже загружена
+
+      const windowBottom = $(window).scrollTop() + $(window).height();
+      const imgTop = img.offset().top;
+
+      // Когда картинка появляется в зоне видимости
+      if (windowBottom > imgTop - 100) {
+        const realSrc = img.attr("data-src");
+        img.attr("src", realSrc);
+        img.hide().fadeIn(600); // плавное появление
+      }
     });
   }
 
-  // 🍫 запускаем бесконечное вращение
-  magicSound.classList.add("spin-forever");
+  // При загрузке и при прокрутке
+  $(window).on("scroll", lazyLoadImages);
+  lazyLoadImages(); // проверка на старте (если картинка уже видна)
 });

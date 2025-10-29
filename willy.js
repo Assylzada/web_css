@@ -138,7 +138,7 @@ quoteBtn.addEventListener('click', () => {
 
 // 🍭 4. Product Filter (Switch Statement)
 const categorySelect = document.querySelector('#categorySelect');
-const products = document.querySelectorAll('#productContainer .product');
+const products = document.querySelectorAll('#productContainer .product-card');
 
 categorySelect.addEventListener('change', (e) => {
   const category = e.target.value;
@@ -154,6 +154,7 @@ categorySelect.addEventListener('change', (e) => {
     }
   });
 });
+
 
 
 // 🍬 Full-Page Keyboard Navigation for Menu
@@ -298,8 +299,162 @@ form.addEventListener('click', (e) => {
   }
 });
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  form.style.display = 'none';
-  successMsg.classList.remove('hidden');
+
+
+
+// Task 0: Setup & test
+$(document).ready(function () {
+  console.log("🍭 jQuery is ready for Willy Wonka’s Magical Factory!");
+
+  /* ------------------------------------------------------
+   * Part 1 — jQuery Search Features
+   * ------------------------------------------------------ */
+
+  // Task 1: Real-time search in the shop
+  // Add a search bar dynamically at the top of the shop
+
+  $("#shopSearch").on("keyup", function () {
+    const value = $(this).val().toLowerCase();
+    $("#shop .product").filter(function () {
+      $(this).toggle($(this).text().toLowerCase().includes(value));
+    });
+  });
+
+  // Task 2: Autocomplete suggestions (based on product names)
+  const productNames = [];
+  $("#shop .shop-item strong").each(function () {
+    productNames.push($(this).text());
+  });
+
+  const $suggestList = $('<ul id="suggestList" class="suggestion-box"></ul>').insertAfter("#shopSearch");
+
+  $("#shopSearch").on("keyup", function () {
+    const query = $(this).val().toLowerCase();
+    $suggestList.empty();
+    if (query) {
+      const matches = productNames.filter((n) => n.toLowerCase().includes(query));
+      matches.forEach((match) => {
+        $suggestList.append(`<li>${match}</li>`);
+      });
+    }
+  });
+
+  $(document).on("click", "#suggestList li", function () {
+    $("#shopSearch").val($(this).text());
+    $suggestList.empty();
+  });
+
+  // Task 3: Highlight search term in FAQ accordion
+  $(".accordion").prepend('<input type="text" id="faqSearch" placeholder="🔍 Search FAQ..." style="width:100%;padding:8px;margin-bottom:10px;">');
+
+  $("#faqSearch").on("keyup", function () {
+    const term = $(this).val();
+    $(".answer, .question").each(function () {
+      const originalText = $(this).text();
+      if (term) {
+        const regex = new RegExp(`(${term})`, "gi");
+        const highlighted = originalText.replace(regex, '<span class="highlight">$1</span>');
+        $(this).html(highlighted);
+      } else {
+        $(this).text(originalText);
+      }
+    });
+  });
+
+
+  /* ------------------------------------------------------
+   * Part 2 — UX Engagement
+   * ------------------------------------------------------ */
+
+  // Task 4: Scroll progress bar
+  $("body").prepend('<div id="scrollBar"></div>');
+  $(window).on("scroll", function () {
+    const scroll = $(this).scrollTop();
+    const docHeight = $(document).height() - $(window).height();
+    const scrolled = (scroll / docHeight) * 100;
+    $("#scrollBar").css("width", scrolled + "%");
+  });
+
+  // Task 5: Animated counter — show random factory stats
+
+  $(".counter").each(function () {
+    const $this = $(this);
+    const target = +$this.attr("data-target");
+    $({ countNum: 0 }).animate(
+      { countNum: target },
+      {
+        duration: 2500,
+        easing: "swing",
+        step: function () {
+          $this.text(Math.floor(this.countNum));
+        },
+        complete: function () {
+          $this.text(target + "+");
+        },
+      }
+    );
+  });
+  // Task 6: Loading spinner on the Golden Ticket form submit
+  $("#registerForm").on("submit", function (e) {
+    e.preventDefault();
+
+    const $submit = $(this).find("button[type='submit']:visible");
+
+    if ($submit.length === 0) {
+      console.warn("Submit button not found or not visible");
+      return;
+    }
+
+    const originalHTML = $submit.html();
+    $submit.prop("disabled", true).html('<span class="spinner"></span> Please wait...');
+
+    // simulate processing delay
+    setTimeout(() => {
+      $("#successMsg").removeClass("hidden").fadeIn(400);
+      $submit.prop("disabled", false).html(originalHTML);
+    }, 2000);
+  });
+
+  /* ------------------------------------------------------
+   * Part 3 — Web App Functionality Enhancements
+   * ------------------------------------------------------ */
+
+  // Task 7: Toast Notification when user subscribes
+  $("#popupForm").on("submit", function (e) {
+    e.preventDefault();
+    $("body").append('<div id="toast">🎉 Subscription successful!</div>');
+    $("#toast").fadeIn();
+    setTimeout(() => $("#toast").fadeOut(() => $("#toast").remove()), 2500);
+  });
+
+  // Task 8: Copy to Clipboard — copy shop price
+  $("#shop .price").each(function (index) {
+    const $btn = $(`<button class="copyBtn" style="margin-left:5px;">📋 Copy</button>`);
+    $(this).after($btn);
+  });
+
+  $(document).on("click", ".copyBtn", function () {
+    const text = $(this).prev(".price").text();
+    navigator.clipboard.writeText(text);
+    $(this).text("✔ Copied!");
+    const $btn = $(this);
+    setTimeout(() => $btn.text("📋 Copy"), 1500);
+  });
+
+  // Task 9: Lazy load gallery images
+  $("img").each(function () {
+    const src = $(this).attr("src");
+    $(this).attr("data-src", src);
+    $(this).removeAttr("src");
+  });
+
+  $(window).on("scroll", function () {
+    $("img[data-src]").each(function () {
+      const top = $(this).offset().top;
+      const scrollBottom = $(window).scrollTop() + $(window).height();
+      if (scrollBottom > top) {
+        $(this).attr("src", $(this).attr("data-src")).removeAttr("data-src");
+      }
+    });
+  });
 });

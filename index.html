@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>About Willy Wonka</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <link rel="stylesheet" href="style3.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<div id="scrollBar"></div>
+<div id="notification-container"></div>
 
 <div class="page-grid">
   
@@ -39,22 +42,17 @@
       <button id="changeBgBtn" class="nav item btn">Change Factory Mood 🌈</button>
     </div>
 
-    <div style="margin-top:16px;">
-      <button id="themeToggle" class="nav item btn">Switch to Night Mode 🌙</button>
-    </div>
-
-    <li class="sound-menu-item" tabindex="0">
-      <div id="magicChoco" class="magic-sound">🎵</div>
-      <button id="soundButton" class="btn">Play Sound</button>
-      <audio id="wonkaSound" src="magic sound.mp3"></audio>
-      <div id="magicChoco" class="magic-sound">🎵</div>
-    </li>
-
     <div class="time-box">
     <button id="showTimeBtn" class="btn">Show Current Time</button>
     <p id="timeDisplay">--:--:--</p>
   </div>
 
+  <div class="sidebar-counter">
+    <div class="counter-item">
+      <span class="count" data-target="1200">0</span>
+      <p>Golden Tickets</p>
+    </div>
+  </div>
   </aside>
 
   <!-- Main Content -->
@@ -99,33 +97,43 @@
         <h3>Everlasting Gobstopper</h3>
         <p>A candy that never runs out of flavor!</p>
         <button class="btn">Learn More</button>
+        <button class="btn copy-btn">Copy</button>
       </div>
+
       <div class="card">
         <img src="https://static.vecteezy.com/system/resources/previews/059/022/002/non_2x/delicious-melted-chocolate-bar-with-nuts-and-splash-sweet-treat-photography-free-png.png" alt="Chocolate River">
         <h3>Chocolate River</h3>
         <p>Delicious flowing streams of pure chocolate.</p>
         <button class="btn">Explore</button>
+        <button class="btn copy-btn">Copy</button>
       </div>
+
       <div class="card">
         <img src="https://static.vecteezy.com/system/resources/previews/069/588/450/non_2x/colorful-summer-drinks-free-png.png" alt="Fizzy Drinks">
         <h3>Fizzy Lifting Drinks</h3>
         <p>A magical drink that makes you float!</p>
         <button class="btn">Try It</button>
+        <button class="btn copy-btn">Copy</button>
       </div>
     </div>
 
     <!-- Gallery -->
     <div class="about-box">
       <h2 class="section-title">Willy Wonka Through the Years</h2>
-      <div class="gallery">
-        <figure> <img src="https://i.ebayimg.com/images/g/bK4AAOSwjyNiT4~T/s-l1200.jpg" alt="1971 Gene Wilder Wonka"> <figcaption>1971 Poster</figcaption> </figure> 
-        <figure> <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2016/12/Gene-Wilder-in-Willy-Wonka-and-the-Chocolate-Factory.jpg" alt="2005 Johnny Depp Wonka"> <figcaption>Gene Wilder</figcaption> </figure> 
-        <figure> <img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Oompa_Loompas_in_1971.png" alt="2023 Wonka"> <figcaption>Oompa Loompas</figcaption> </figure> 
-        <figure> <img src="https://images.bauerhosting.com/legacy/empire-tmdb/films/252/images/nyqiCFF3pjcdwG2KmOwvM6CCLKA.jpg" alt="Golden Ticket"> <figcaption>2005 Scene</figcaption> </figure> 
-        <figure> <img src="https://m.media-amazon.com/images/M/MV5BMTM1MzAyMTk3Nl5BMl5BanBnXkFtZTcwMTIyNTIyMw@@._V1_.jpg" alt="Wonka Bar"> <figcaption>Johny Depp</figcaption> </figure> 
-        <figure> <img src="https://static.wikia.nocookie.net/timburton/images/b/b1/WillyWonka.jpg" alt="Oompa Loompas"> <figcaption>Burton Style</figcaption> </figure> 
-      </div>
+      <div class="gallery-search">
+        <input type="text" id="wonkaSearch" placeholder="Search Wonka by year...">
+        <ul id="suggestions" class="suggestions-list"></ul>
+        <div class="gallery">
+          <figure> <img data-src="https://i.ebayimg.com/images/g/bK4AAOSwjyNiT4~T/s-l1200.jpg" alt="1971 Gene Wilder Wonka" class="lazy-img"> <figcaption>1971 Poster</figcaption> </figure> 
+          <figure> <img data-src="https://static0.srcdn.com/wordpress/wp-content/uploads/2016/12/Gene-Wilder-in-Willy-Wonka-and-the-Chocolate-Factory.jpg" alt="2005 Johnny Depp Wonka" class="lazy-img"> <figcaption>Gene Wilder</figcaption> </figure> 
+          <figure> <img data-src="https://upload.wikimedia.org/wikipedia/en/d/d9/Oompa_Loompas_in_1971.png" alt="2023 Wonka" class="lazy-img"> <figcaption>Oompa Loompas</figcaption> </figure> 
+          <figure> <img data-src="https://images.bauerhosting.com/legacy/empire-tmdb/films/252/images/nyqiCFF3pjcdwG2KmOwvM6CCLKA.jpg" alt="Golden Ticket" class="lazy-img"> <figcaption>2005 Scene</figcaption> </figure> 
+          <figure> <img data-src="https://m.media-amazon.com/images/M/MV5BMTM1MzAyMTk3Nl5BMl5BanBnXkFtZTcwMTIyNTIyMw@@._V1_.jpg" alt="Wonka Bar" class="lazy-img"> <figcaption>Johny Depp</figcaption> </figure> 
+          <figure> <img data-src="https://static.wikia.nocookie.net/timburton/images/b/b1/WillyWonka.jpg" alt="Oompa Loompas" class="lazy-img"> <figcaption>Burton Style</figcaption> </figure> 
+        </div>
+     </div>
     </div>
+  
 
     <!-- Random quoute section -->
     <div class="about-box">
@@ -153,31 +161,36 @@
 
     <!-- FAQ -->
     <div class="about-box">
-      <h2 class="section-title">Wonka’s Secrets & Curiosities</h2>
+      <div class="faq-search">
+        <h2 class="section-title">Wonka’s Secrets & Curiosities</h2>
+        <input type="text" id="faqSearch" placeholder="Search in FAQs...">
+        <ul id="suggestions"></ul>
 
-      <div class="faq">
-        <div class="faq-item">
-          <h3 class="faq-question">What is the secret ingredient in Wonka’s chocolate?</h3>
-          <div class="faq-answer">
-            <p>The secret in Wonka’s chocolate isn’t just sugar and cocoa — it’s pure wonder. It’s created with imagination and a little bit of mischief.</p>
+        <div class="faq">
+          <div class="faq-item">
+            <h3 class="faq-question">What is the secret ingredient in Wonka’s chocolate?</h3>
+            <div class="faq-answer">
+              <p>The secret in Wonka’s chocolate isn’t just sugar and cocoa — it’s pure wonder. It’s created with imagination and a little bit of mischief.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="faq-item">
-          <h3 class="faq-question">How can I visit the Chocolate Factory?</h3>
-          <div class="faq-answer">
-            <p>Find a Golden Ticket hidden inside a Wonka Bar — only the chosen few can enter the factory.</p>
+          <div class="faq-item">
+            <h3 class="faq-question">How can I visit the Chocolate Factory?</h3>
+            <div class="faq-answer">
+              <p>Find a Golden Ticket hidden inside a Wonka Bar — only the chosen few can enter the factory.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="faq-item">
-          <h3 class="faq-question">What kind of chocolate does Willy Wonka love the most?</h3>
-          <div class="faq-answer">
-            <p>He loves the kind that makes people smile — sometimes the simplest bar has the most magic.</p>
+          <div class="faq-item">
+            <h3 class="faq-question">What kind of chocolate does Willy Wonka love the most?</h3>
+            <div class="faq-answer">
+              <p>He loves the kind that makes people smile — sometimes the simplest bar has the most magic.</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
 
     <!-- Contact Form -->
     <div class="about-box">
@@ -258,7 +271,6 @@
       <p id="ratingMessage" style="text-align:center; margin-top:10px; color:white;">Click a star to rate!</p>
     </div>
 
-
   </main>
 
   <!-- Footer -->
@@ -282,6 +294,7 @@
 </div>
 
 <!--Script Connection -->
-<script src="script3.js" defer></script>
+<script src="script3.js" ></script>
+<div id="copy-tooltip">Copied to clipboard!</div>
 </body>
 </html>
