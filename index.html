@@ -42,17 +42,21 @@
       <button id="changeBgBtn" class="nav item btn">Change Factory Mood 🌈</button>
     </div>
 
-    <div class="time-box">
-    <button id="showTimeBtn" class="btn">Show Current Time</button>
-    <p id="timeDisplay">--:--:--</p>
-  </div>
-
-  <div class="sidebar-counter">
-    <div class="counter-item">
-      <span class="count" data-target="1200">0</span>
-      <p>Golden Tickets</p>
+    <div style="margin-top:20px;">
+      <button id="themeToggle" class="nav item btn">🌞 Light  / 🌙 Dark</button>
     </div>
-  </div>
+
+    <div class="time-box">
+      <button id="showTimeBtn" class="btn">Show Current Time</button>
+      <p id="timeDisplay">--:--:--</p>
+    </div>
+
+    <div class="sidebar-counter">
+      <div class="counter-item">
+        <span class="count" data-target="1200">0</span>
+        <p class="text-count">Golden Tickets</p>
+      </div>
+    </div>
   </aside>
 
   <!-- Main Content -->
@@ -294,6 +298,14 @@
 </div>
 
 <!--Script Connection -->
+<div id="productModal" class="popup-overlay hidden">
+  <div class="popup">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDescription"></p>
+    <button id="closeModal" class="btn">Close</button>
+  </div>
+</div>
+
 <script src="script3.js" ></script>
 <div id="copy-tooltip">Copied to clipboard!</div>
 </body>

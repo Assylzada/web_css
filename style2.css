@@ -754,9 +754,71 @@
     }
 
 
-    .night-mode {
-      background: radial-gradient(circle at top, #12061f, #000);
-      color: var(--cream);
+    .light-mode {
+      background: radial-gradient(circle at top, #faf8ff, #d6c8f0);
+      color: var(--choco-dark);
+    }
+
+    /* Optional: subtle UI element styling for better harmony */
+    .light-mode a {
+      color: var(--choco-light);
+      text-decoration: none;
+    }
+    .light-mode a:hover {
+      color: var(--gold);
+    }
+
+    .light-mode button {
+      background: linear-gradient(135deg, var(--choco-light), var(--gold));
+      color: var(--choco-dark);
+      border: none;
+      border-radius: var(--radius);
+      padding: 0.6em 1.2em;
+      font-weight: 600;
+      box-shadow: 0 3px 10px rgba(26, 11, 46, 0.1);
+      transition: all 0.3s ease;
+    }
+    .light-mode button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(26, 11, 46, 0.15);
+    }
+
+    /* Optional card/container background */
+    .light-mode .card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(6px);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px rgba(50, 20, 80, 0.08);
+      padding: 1.5rem;
+    }
+
+    .light-mode .hero h2,
+    .light-mode .hero p,
+    .light-mode .hero a,
+    .light-mode .hero button {
+      color: var(--choco-dark);
+    }
+
+    .light-mode .hero .btn,
+    .light-mode .hero .wonka-btn {
+      background: linear-gradient(90deg, var(--gold), var(--choco-light));
+      color: var(--choco-dark);
+    }
+
+    /* optional: golden ticket stays bright */
+    .light-mode .hero .ticket img {
+      filter: brightness(1.1);
+    }
+
+    /* Default (dark mode) */
+    .card h3 {
+      color: var(--cream); /* light text on dark cards */
+      margin-top: 10px;
+    }
+
+    /* Light mode override */
+    body.light-mode .card h3 {
+      color: var(--choco-dark); /* deep violet for readability */
     }
 
     .quote {

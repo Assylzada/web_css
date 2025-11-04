@@ -324,5 +324,61 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("scrollBar").style.width = scrollPercent + "%";
   });
 
+
+  // --- Light / Night Mode Toggle ---
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      themeToggle.textContent = 
+        document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Night Mode";
+    });
+  }
+
+    // --- Modal for "Learn More" buttons ---
+  const modal = document.getElementById("movieModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalText = document.getElementById("modalText");
+  const closeBtn = document.querySelector(".close");
+
+  const movieInfo = {
+    "1971 Classic": "The 1971 film 'Willy Wonka & the Chocolate Factory' stars Gene Wilder and remains a timeless classic.",
+    "2005 Adaptation": "Tim Burton’s 2005 version features Johnny Depp as a quirky, darker Willy Wonka.",
+    "2023 Prequel": "The 2023 film 'Wonka' with Timothée Chalamet explores the young inventor’s early adventures."
+  };
+
+  document.querySelectorAll(".card .btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      const title = e.target.previousElementSibling.previousElementSibling.textContent;
+      modalTitle.textContent = title;
+      modalText.textContent = movieInfo[title];
+      modal.style.display = "block";
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  });
+
+
+
+  // Загружаем звук
+  const clickSound = new Audio("cartoon-button-click-sound.mp3");
+  clickSound.volume = 0.4; // громкость от 0 до 1
+
+  // Добавляем звук на все кнопки
+  document.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      // Перематываем, чтобы звук всегда играл с начала
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+  });
+
+
 });
 

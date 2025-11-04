@@ -207,10 +207,10 @@ renderProducts(displayedProducts);
 // 🌞 2. Theme Toggle
 const toggleBtn = document.querySelector('#themeToggle');
 toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('night-mode');
-  toggleBtn.textContent = document.body.classList.contains('night-mode')
-    ? '🌙 Switch to Day'
-    : '🌞 Switch to Night';
+  document.body.classList.toggle('light-mode');
+  toggleBtn.textContent = document.body.classList.contains('light-mode')
+    ? '🌙 Switch to Night'
+    : '🌞 Switch to Day';
 });
 
 

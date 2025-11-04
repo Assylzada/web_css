@@ -532,3 +532,121 @@ button.btn:hover {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
+
+
+/* Tablet view */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    order: 2;
+  }
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column;
+    text-align: center;
+  }
+  .card {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .time-box, .sidebar-counter {
+    width: 100%;
+  }
+}
+
+/* --- Night Mode Styles --- */
+body.dark-mode {
+  background: #1e1e2f;
+  color: #f0f0f0;
+}
+
+body.dark-mode #top-banner {
+  background: #000;
+  border-bottom: 4px solid #8b6cae;
+}
+
+body.dark-mode .nav .nav-link {
+  background: #333;
+  color: #f0f0f0;
+}
+
+body.dark-mode .nav .nav-link:hover {
+  background: #8b6cae;
+  color: white;
+}
+
+body.dark-mode .card {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+body.dark-mode .faq-section,
+body.dark-mode .multi-step-form,
+body.dark-mode .rating-section,
+body.dark-mode .interactive-section,
+body.dark-mode .time-display-section {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+body.dark-mode .popup-content {
+  background-color: #2e2e3f;
+  color: white;
+}
+
+body.dark-mode .site-footer {
+  background: #000;
+  color: #ffffff;
+  border-top: 4px solid #8b6cae;
+}
+
+body.dark-mode .page-intro {
+  color: #ffffff;
+}
+
+body.dark-mode .page-intro .greeting-message{
+  color: #ffffff;
+}
+
+body.dark-mode .dynamic-message #wonkaMessage {
+  color: #ffffff;
+}
+
+body.dark-mode .text-form{
+  color: #ffffff;
+}
+
+/* --- Modal styles --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+.modal-content {
+  background-color: #8b79a8;
+  color: #000;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+.modal .close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+body.dark-mode .modal-content {
+  background: #2e2e3f;
+  color: #fff;
+}

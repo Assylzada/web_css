@@ -629,3 +629,112 @@ mark {
 .lazy-img[src] {
   filter: blur(0);
 }
+
+
+/*  Responsive Layout */
+
+/* Tablet (до 992px) */
+@media (max-width: 992px) {
+  .page-grid {
+    grid-template-areas:
+      "header header"
+      "main main"
+      "sidebar sidebar"
+      "footer footer";
+    grid-template-columns: 1fr;
+  }
+
+  .who-grid, .factory-media {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Mobile (до 600px) */
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .card {
+    max-width: 90%;
+  }
+
+  #wonkaSearch, #faqSearch {
+    width: 90%;
+  }
+}
+
+/* === Light/Night Mode === */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .header,
+body.dark-mode .footer,
+body.dark-mode .sidebar,
+body.dark-mode .main {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode a {
+  color: #ffffff;
+}
+
+body.dark-mode .btn {
+  background-color: #333;
+  color: #f0f0f0;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .sidebar-counter .count {
+  color: #ffd54f; /* золотистый оттенок для цифр */
+  font-weight: bold;
+}
+
+body.dark-mode .sidebar-counter .text-count {
+  color:rgb(255, 255, 255)
+}
+
+body.dark-mode .time-box #timeDisplay {
+  color:rgb(255, 255, 255)
+}
+
+.sidebar .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}

@@ -15,7 +15,8 @@
     <div class="container header-inner">
       <h1 class="site-title">Willy Wonka's World</h1>
 
-      <div class="nav">
+      <div class="nav" >
+        <button id="themeToggle" class="btn">🌙 Night Mode</button>
         <a href="willy.html" class="nav-item nav-link">Home</a>
         <a href="index.html" class="nav-item nav-link">About</a>
         <a href="shop.html" class="nav-item nav-link">Shop</a>
@@ -156,7 +157,7 @@
 
   <!-- Multi-Step Form -->
   <div class="multi-step-form container">
-    <h2>Golden Ticket Application</h2>
+    <h2 class="text-form"> Golden Ticket Application</h2>
     <form id="wonkaForm">
       <div class="form-step active">
         <label>Name:</label>
@@ -189,6 +190,16 @@
   <div class="site-footer">
     <div class="container">
       <p>© 2025 Assylay Shukirbay. All rights reserved.</p>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div id="movieModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
     </div>
   </div>
 

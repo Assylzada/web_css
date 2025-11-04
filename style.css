@@ -606,6 +606,160 @@ mark {
   background: #512da8;
 }
 
+/* 🌞 LIGHT MODE THEME */
+body.light-mode {
+  background: radial-gradient(circle at 30% 30%, #f9f8ff, #e4e0f5);
+  color: #1a0b2e;
+  transition: background 0.6s ease, color 0.3s ease;
+}
+
+/* Navbar */
+body.light-mode .navbar {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(0,0,0,0.05);
+  color: #1a0b2e;
+}
+body.light-mode .nav-links a {
+  color: #311044;
+}
+body.light-mode .nav-links a:hover,
+body.light-mode .nav-links a.active {
+  background: rgba(49,16,68,0.08);
+  color: #000;
+}
+
+/* Layout */
+body.light-mode .sidebar,
+body.light-mode .main {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.05);
+  color: #1a0b2e;
+}
+
+/* Hero section — keep it bright, but not too white */
+body.light-mode .hero {
+  background: linear-gradient(180deg, #fff, #f5f2ff);
+  color: #1a0b2e;
+}
+body.light-mode .title {
+  background: linear-gradient(90deg,#2a0d1c,#7e5a9b);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+body.light-mode .lead {
+  color: #4b3b5d;
+}
+
+/* Cards */
+body.light-mode .card {
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,0.07);
+  color: #1a0b2e;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+body.light-mode .desc {
+  color: #4c3b62;
+}
+body.light-mode .price {
+  color: #7b45a8;
+}
+
+/* Buttons */
+body.light-mode .btn-primary,
+body.light-mode #colorBtn,
+body.light-mode #themeToggle,
+body.light-mode .wonka-btn {
+  background: linear-gradient(90deg,#ffd86f,#ffb6f9);
+  color: #2a0d1c;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+body.light-mode .btn-primary:hover,
+body.light-mode #colorBtn:hover,
+body.light-mode #themeToggle:hover,
+body.light-mode .wonka-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Gallery */
+body.light-mode .gallery-section {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+body.light-mode .caption {
+  background: rgba(255,255,255,0.85);
+  color: #1a0b2e;
+}
+
+/* Accordion */
+body.light-mode .accordion {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+body.light-mode .question {
+  background: linear-gradient(90deg,#fff,#eae3f5);
+  color: #1a0b2e;
+}
+body.light-mode .question:hover {
+  background: linear-gradient(90deg,#ffd86f,#b794ff);
+  color: #311044;
+}
+body.light-mode .answer {
+  background: rgba(240,240,250,0.9);
+  color: #1a0b2e;
+}
+
+/* Checkout, Best Sellers, etc. */
+body.light-mode .checkout,
+body.light-mode .best-sellers {
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,0.05);
+  color: #1a0b2e;
+}
+
+/* Footer */
+body.light-mode footer {
+  color: #4c3b62;
+}
+
+/* Popup */
+body.light-mode .popup-content {
+  background: #fff;
+  color: #1a0b2e;
+}
+
+/* Inputs, selects */
+body.light-mode input,
+body.light-mode select {
+  background: #fff;
+  color: #1a0b2e;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Toasts */
+body.light-mode .toast {
+  background: #2ecc71;
+  color: #fff;
+}
+
+/* Smooth transitions */
+body.light-mode * {
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Default (dark mode) */
+.open-hours {
+  margin-top: 14px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Light mode override */
+body.light-mode .open-hours {
+  color: rgba(26, 11, 46, 0.7); /* deep violet text, slightly muted */
+}
+
 /* --------- Responsive --------- */
 @media (max-width: 900px) {
   .wrap { grid-template-columns: 1fr; }

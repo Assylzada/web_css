@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
           submitBtn.disabled = false;
           form.reset();
 
-          // 🎉 Task 7: Show Notification after success
+          //Task 7: Show Notification after success
           showNotification("🎉 Golden Ticket sent successfully!");
         }, 2500);
       }
@@ -269,7 +269,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
     // --- Keyboard Navigation for Menu ---
   const navItems = document.querySelectorAll(".nav-item");
   let currentIndex = 0;
@@ -358,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // --- Real-time Gallery Search for "Willy Wonka Through the Years" ---
+  //Real time search
   const searchInput = document.getElementById("wonkaSearch");
   const figures = document.querySelectorAll(".gallery figure");
 
@@ -375,7 +374,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Task 2: Autocomplete Search Suggestions ---
+  //Autocomplete Search Suggestions 
   const questions = [];
     $(".faq-question").each(function () {
       questions.push($(this).text());
@@ -415,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-// --- Task 3: Search Highlighting for FAQ section ---
+// Search Highlighting for FAQ section
   const faqSearch = document.getElementById("faqSearch");
   const faqItems = document.querySelectorAll(".faq-item");
 
@@ -439,7 +438,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
- // --- Task 4: Colorful Scroll Progress Bar ---
+ // Colorful Scroll Progress Bar 
   document.addEventListener("scroll", function() {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -448,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // 🪄 Task 5: Animated Number Counter
+  // Animated Number Counter
   const counters = document.querySelectorAll('.count');
   const speed = 150; // скорость анимации
 
@@ -523,7 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // 🪄 Task 9: Lazy Loading Images
+  //Lazy Loading Images
   function lazyLoadImages() {
     $(".lazy-img").each(function () {
       const img = $(this);
@@ -536,12 +535,95 @@ document.addEventListener("DOMContentLoaded", () => {
       if (windowBottom > imgTop - 100) {
         const realSrc = img.attr("data-src");
         img.attr("src", realSrc);
-        img.hide().fadeIn(600); // плавное появление
+        img.hide().fadeIn(600); 
       }
     });
   }
 
   // При загрузке и при прокрутке
   $(window).on("scroll", lazyLoadImages);
-  lazyLoadImages(); // проверка на старте (если картинка уже видна)
+  lazyLoadImages();
+
+  //Functional Buttons ===
+  const modal = $('#productModal');
+  const modalTitle = $('#modalTitle');
+  const modalDescription = $('#modalDescription');
+
+  $('.card .btn:not(.copy-btn)').on('click', function () {
+    const title = $(this).siblings('h3').text();
+    const desc = $(this).siblings('p').text();
+    modalTitle.text(title);
+    modalDescription.text(desc);
+    modal.removeClass('hidden');
+  });
+
+  $('#closeModal').on('click', () => modal.addClass('hidden'));
+
+
+  $('#subscribeForm').on('submit', function (e) {
+    e.preventDefault();
+    const email = $('#popupEmail').val().trim();
+
+    if (email === '' || !email.includes('@')) {
+      alert('Please enter a valid email!');
+    } else {
+      alert('Subscribed successfully! 🎉');
+      $('#subscribeOverlay').addClass('hidden');
+      this.reset();
+    }
+  });
+
+
+  $('.next-btn').on('click', function () {
+    const currentStep = $(this).closest('.form-step');
+    const inputs = currentStep.find('input');
+    let valid = true;
+
+    inputs.each(function () {
+      if (!$(this).val().trim()) {
+        valid = false;
+        $(this).css('border', '2px solid red');
+      } else {
+        $(this).css('border', '');
+      }
+    });
+
+    if (valid) {
+      const nextStep = currentStep.next('.form-step');
+      currentStep.removeClass('active-step');
+      nextStep.addClass('active-step');
+    } else {
+      alert('Please complete all fields before continuing!');
+    }
+  });
+
+  //Light/Night Mode 
+  const themeToggle = document.getElementById("themeToggle");
+
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+  // Audio
+  const clickSound = new Audio("cartoon-button-click-sound.mp3");
+  clickSound.volume = 0.4; 
+
+  
+  document.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+  });
+
 });
