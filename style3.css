@@ -631,9 +631,6 @@ mark {
 }
 
 
-/*  Responsive Layout */
-
-/* Tablet (до 992px) */
 @media (max-width: 992px) {
   .page-grid {
     grid-template-areas:
@@ -689,47 +686,62 @@ mark {
   }
 }
 
-/* === Light/Night Mode === */
 
 body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 body.dark-mode .header,
-body.dark-mode .footer,
-body.dark-mode .sidebar,
+body.dark-mode .footer {
+  background-color: #7665a4;
+}
+body.dark-mode .sidebar{
+  background-color:#ffffff;
+}
+
 body.dark-mode .main {
-  background-color: #1e1e1e;
+  background-color:  #ffffff;
 }
 
 body.dark-mode a {
-  color: #ffffff;
+  color: #000000;
 }
 
 body.dark-mode .btn {
-  background-color: #333;
-  color: #f0f0f0;
+  background-color: #ffffff;
+  color: #000000;
 }
 
+body.dark-mode .site-title,
+body.dark-mode .greeting-message,
+body.dark-mode .section-title,
+body.dark-mode .who-text,
+body.dark-mode .img-text,
+body.dark-mode .factory-list,
+body.dark-mode .fun-facts,
+body.dark-mode .quote-section .faq-answer,
+body.dark-mode #ratingMessage,
+body.dark-mode .footer {
+  color:rgb(37, 37, 37);
+}
+
+body.dark-mode .quote-section p {
+  color:rgb(37, 37, 37);
+}
 body.dark-mode input,
 body.dark-mode textarea {
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #444;
-}
-
-body.dark-mode .sidebar-counter .count {
-  color: #ffd54f; /* золотистый оттенок для цифр */
-  font-weight: bold;
+  background-color: #b8b8b8;
+  color: #000000;
+  border: 1px solid #b8b8b8;
 }
 
 body.dark-mode .sidebar-counter .text-count {
-  color:rgb(255, 255, 255)
+  color:rgb(0, 0, 0)
 }
 
 body.dark-mode .time-box #timeDisplay {
-  color:rgb(255, 255, 255)
+  color:rgb(0, 0, 0)
 }
 
 .sidebar .btn {

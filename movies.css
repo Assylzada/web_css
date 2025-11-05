@@ -435,7 +435,7 @@ button.btn:hover {
   background: #402352;
 }
 
-/* --- Greeting Message --- */
+
 .greeting-message {
   font-size: 1.4rem;
   font-weight: 500;
@@ -507,12 +507,12 @@ button.btn:hover {
   background-color: #f0f0f0;
 }
 
-/* Подсветка найденных слов */
+
 .highlight {
   background-color: #ffd43b;
 }
 
-/* Scroll Progress Bar */
+
 #scrollBar {
   position: fixed;
   top: 0;
@@ -527,63 +527,83 @@ button.btn:hover {
   transition: width 0.2s ease;
 }
 
-/* Moving gradient effect */
+
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
 }
 
 
-/* Tablet view */
 @media (max-width: 992px) {
+
   .container {
     flex-direction: column;
   }
-  .sidebar {
-    width: 100%;
-    order: 2;
+
+ 
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
   }
 }
 
-/* Mobile view */
+
 @media (max-width: 600px) {
+
   .nav {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
+    gap: 10px;
   }
+
   .card {
     width: 100%;
     margin-bottom: 15px;
   }
-  .time-box, .sidebar-counter {
+
+  .time-box {
     width: 100%;
   }
 }
 
-/* --- Night Mode Styles --- */
+.gallery-container {
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+
+@media (max-width: 992px) {
+  .gallery-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+  .gallery-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
 body.dark-mode {
-  background: #1e1e2f;
-  color: #f0f0f0;
+  background: #ffffff;
+  color: #000000;
 }
 
 body.dark-mode #top-banner {
-  background: #000;
-  border-bottom: 4px solid #8b6cae;
+  background: #7665a4;
 }
 
-body.dark-mode .nav .nav-link {
-  background: #333;
-  color: #f0f0f0;
-}
-
-body.dark-mode .nav .nav-link:hover {
-  background: #8b6cae;
-  color: white;
-}
 
 body.dark-mode .card {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: #e8e8e8;
+  color: #000000;
 }
 
 body.dark-mode .faq-section,
@@ -592,34 +612,26 @@ body.dark-mode .rating-section,
 body.dark-mode .interactive-section,
 body.dark-mode .time-display-section {
   background: rgba(255,255,255,0.1);
-  color: #fff;
+  color: #000000;
 }
 
+body.dark-mode .popup-content h2,
 body.dark-mode .popup-content {
-  background-color: #2e2e3f;
-  color: white;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
 }
 
 body.dark-mode .site-footer {
-  background: #000;
-  color: #ffffff;
-  border-top: 4px solid #8b6cae;
+  background: #7665a4;
+  color: #000000;
 }
 
-body.dark-mode .page-intro {
-  color: #ffffff;
-}
-
-body.dark-mode .page-intro .greeting-message{
-  color: #ffffff;
-}
-
-body.dark-mode .dynamic-message #wonkaMessage {
-  color: #ffffff;
-}
-
-body.dark-mode .text-form{
-  color: #ffffff;
+body.dark-mode .page-intro,
+body.dark-mode .text-form,
+body.dark-mode .dynamic-message #wonkaMessage,
+body.dark-mode .page-intro .greeting-message,
+body.dark-mode .rating-result {
+  color: #000000;
 }
 
 /* --- Modal styles --- */

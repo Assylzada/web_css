@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Star Rating System ---
+  
   const stars = document.querySelectorAll(".star-rating .star");
   const ratingResult = document.getElementById("ratingResult");
 
@@ -160,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    // --- Keyboard Navigation for Menu ---
+    
     const navItems = document.querySelectorAll(".nav-item");
     let currentIndex = 0;
 
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-  // --- Multi-Step Form ---
+  
   const steps = document.querySelectorAll(".form-step");
   const nextBtns = document.querySelectorAll(".nextBtn");
   const backBtns = document.querySelectorAll(".backBtn");
@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // --- Time-Based Greeting ---
+  
   const greetingEl = document.getElementById("greetingMessage");
   if (!greetingEl) return;
 
@@ -239,7 +239,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   greetingEl.textContent = greetingText;
 
-  // 🪄 Task 1: Real-time Gallery Search Filter
+  
   $("#gallerySearch").on("keyup", function() {
     let value = $(this).val().toLowerCase();
 
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
     questions.push($(this).text());
   });
 
-  // --- Автоподсказки ---
+  
   $("#faqSearch").on("keyup", function () {
     const query = $(this).val().toLowerCase();
     $("#suggestions").empty();
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     highlightMatches(query);
   });
 
-  // --- Клик по подсказке ---
+  
   $(document).on("click", "#suggestions li", function () {
     const text = $(this).text();
     $("#faqSearch").val(text);
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
     highlightMatches(text.toLowerCase());
   });
 
-  // --- Фильтрация FAQ ---
+  
   function filterFAQ(query) {
     $(".faq-item").each(function () {
       const q = $(this).find(".faq-question").text().toLowerCase();
@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Подсветка совпадений ---
+  
   function highlightMatches(query) {
     removeHighlights();
     if (!query) return;
@@ -309,14 +309,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- Удаление подсветки ---
+ 
   function removeHighlights() {
     $(".highlight").each(function () {
       $(this).replaceWith($(this).text());
     });
   }
 
-  // --- Task 4: Colorful Scroll Progress Bar ---
+  
   document.addEventListener("scroll", function() {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -325,17 +325,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // --- Light / Night Mode Toggle ---
+  
   const themeToggle = document.getElementById("themeToggle");
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       themeToggle.textContent = 
-        document.body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Night Mode";
+        document.body.classList.contains("dark-mode") ? "🌙 Night Mode" : "☀️ Light Mode";
     });
   }
 
-    // --- Modal for "Learn More" buttons ---
+  
   const modal = document.getElementById("movieModal");
   const modalTitle = document.getElementById("modalTitle");
   const modalText = document.getElementById("modalText");
@@ -366,11 +366,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // Загружаем звук
   const clickSound = new Audio("cartoon-button-click-sound.mp3");
   clickSound.volume = 0.4; // громкость от 0 до 1
 
-  // Добавляем звук на все кнопки
+ 
   document.querySelectorAll("button").forEach(btn => {
     btn.addEventListener("click", () => {
       // Перематываем, чтобы звук всегда играл с начала
