@@ -16,7 +16,11 @@
       <h1 class="site-title">Willy Wonka's World</h1>
 
       <div class="nav" >
-        <button id="themeToggle" class="btn">☀️ Light Mode</button>
+        <div class="theme-toggle">
+          <input type="checkbox" id="themeToggle">
+          <label for="themeToggle" class="toggle-label">
+          </label>
+        </div>
         <a href="willy.html" class="nav-item nav-link">Home</a>
         <a href="index.html" class="nav-item nav-link">About</a>
         <a href="shop.html" class="nav-item nav-link">Shop</a>
@@ -31,6 +35,8 @@
     <h2>Willy Wonka on the Big Screen</h2>
     <p>Over the decades, Willy Wonka has been brought to life by different actors, each adding their own magic.</p>
   </div>
+
+  <section id="movie-search-section"></section>
 
   <!-- Movie Cards -->
   <div class="container card-row">
@@ -54,7 +60,6 @@
     </div>
   </div>
 
-
   <!-- Gallery Search -->
   <div class="gallery-search">
     <input type="text" id="gallerySearch" placeholder="Search Willy Wonka by year or name...">
@@ -70,7 +75,6 @@
     <div class="gallery-item"><img src="https://i.abcnewsfe.com/a/a17fff4a-bb10-404f-9b1a-ecfab143be95/wonka-ht-gmh-230711_1689091578200_hpMain_16x9.jpg" alt="2023 Poster"><span class="caption">2023 Poster</span></div>
     <div class="gallery-item"><img src="https://media-cldnry.s-nbcnews.com/image/upload/t_fit-760w,f_auto,q_auto:best/rockcms/2023-12/willy-wonka-mc-231211-01-b60c9a.jpg" alt="Chalamet"><span class="caption">Chalamet</span></div>
   </div>
-
 
   <div class="faq-section container">
     <h2>Frequently Asked Questions</h2>
@@ -97,12 +101,6 @@
     <div class="color-change">
       <h3>Change Background Color</h3>
       <button id="colorBtn">Change Background</button>
-    </div>
-
-    <!-- Dynamic Text Change Section -->
-    <div class="dynamic-message">
-      <h3 id="wonkaMessage">Click the button to reveal a surprise message!</h3>
-      <button id="messageBtn" class="btn">Reveal Message</button>
     </div>
 
     <div class="subscribe">

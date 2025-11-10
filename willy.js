@@ -90,7 +90,19 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
 
 
 
-  
+window.onload = function () {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+
+  if (!storedUser) {
+    alert("⚠️ Please log in first.");
+    window.location.href = "auth.html"; // your login/signup page
+    return;
+  }
+
+  // Insert user name into the welcome text
+  document.getElementById("userName").textContent = storedUser.name;
+};
+
 
   /* ===============================
    🍭 WONKA DOM + EVENT INTERACTIONS
@@ -107,14 +119,6 @@ stars.forEach((star, index) => {
   });
 });
 
-// 🌞 2. Theme Toggle
-const toggleBtn = document.querySelector('#themeToggle');
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  toggleBtn.textContent = document.body.classList.contains('light-mode')
-    ? '🌙 Switch to Night'
-    : '🌞 Switch to Day';
-});
 
 // 🍬 3. Random Wonka Quote
 const quotes = [
@@ -457,4 +461,30 @@ $(document).ready(function () {
       }
     });
   });
+});
+
+const themeToggle = document.getElementById('themeToggle');
+
+// Default: dark mode
+document.body.classList.remove('light-mode'); // ensure dark mode first
+
+// Load saved theme on page load
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-mode');
+  themeToggle.checked = true;
+} else {
+  // Default dark mode
+  localStorage.setItem('theme', 'dark');
+  themeToggle.checked = false;
+}
+
+// Toggle theme on switch
+themeToggle.addEventListener('change', () => {
+  document.body.classList.toggle('light-mode');
+
+  if (document.body.classList.contains('light-mode')) {
+    localStorage.setItem('theme', 'light');
+  } else {
+    localStorage.setItem('theme', 'dark');
+  }
 });

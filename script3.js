@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = document.getElementById("message");
       const submitBtn = form.querySelector(".btn");
 
-      // remove previous errors
       document.querySelectorAll(".error-text").forEach(e => e.remove());
 
       let isValid = true;
@@ -47,37 +46,35 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (isValid) {
-        // 🌀 Task 6: Loading Spinner on Submit
+        //Loading Spinner on Submit
         submitBtn.disabled = true;
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = `<span class="spinner"></span> Please wait...`;
 
-        // Симуляция "отправки на сервер"
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
           submitBtn.disabled = false;
           form.reset();
 
-          //Task 7: Show Notification after success
+          //Showing notification after success
           showNotification("🎉 Golden Ticket sent successfully!");
         }, 2500);
       }
     });
   }
 
-  // 🪄 Task 7: Notification System
-
+  //Notification System
   function showNotification(message) {
     const container = document.getElementById("notification-container");
 
-    // Создаём блок уведомления
+    // блок уведомления
     const notification = document.createElement("div");
     notification.classList.add("notification");
     notification.textContent = message;
 
     container.appendChild(notification);
 
-    // Удаляем после исчезновения
+    // Удаление
     setTimeout(() => {
       notification.remove();
     }, 4000);
@@ -98,9 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!answer) return;
 
       if (answer.style.maxHeight && answer.style.maxHeight !== "0px") {
-        // currently open -> close
         answer.style.maxHeight = "0";
-        // optionally collapse padding:
         answer.style.paddingTop = "0";
         answer.style.paddingBottom = "0";
       } else {
@@ -134,18 +129,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // close by close button
     if (closeBtn) {
       closeBtn.addEventListener("click", () => {
         overlay.classList.add("hidden");
       });
     }
 
-    // handle subscribe form submission with simple validation
     if (popupForm) {
       popupForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        // remove previous errors inside popup
         popupForm.querySelectorAll(".error-text").forEach(x => x.remove());
         let ok = true;
         const val = popupEmail ? popupEmail.value.trim() : "";
@@ -175,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const changeBgBtn = document.getElementById("changeBgBtn");
 
-  const colors = ["#8266a7", "#ffd43b", "#ff9a3c", "#a04fff", "#8be0c8", "#ff7ab6"];
+  const colors = ["#ffd43b", "#ff9a3c", "#a04fff", "#8be0c8", "#ff7ab6", "#402352"];
   let colorIndex = 0;
   const pageGrid = document.querySelector(".page-grid");
 
@@ -202,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Rating Stars ---
+  //Rating Stars
   const stars = document.querySelectorAll(".star");
   const ratingMessage = document.getElementById("ratingMessage");
   let currentRating = 0;
@@ -234,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-   // --- Wonka Random Fact Generator ---
+   //Wonka Random Fact Generator
   const factArea = document.querySelector("#factArea");
   const factButton = document.querySelector("#factButton");
   const factList = document.querySelectorAll("#factList p");
@@ -269,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    // --- Keyboard Navigation for Menu ---
+    //Keyboard Navigation for Menu 
   const navItems = document.querySelectorAll(".nav-item");
   let currentIndex = 0;
 
@@ -298,12 +290,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const steps = multiForm.querySelectorAll(".form-step");
   let currentStep = 0;
 
+  // Show the current step
   const showStep = (index) => {
     steps.forEach((step, i) => {
       step.classList.toggle("active-step", i === index);
     });
   };
 
+  // Update the review page
   const updateReview = () => {
     document.getElementById("reviewName").textContent = document.getElementById("crewName").value;
     document.getElementById("reviewAge").textContent = document.getElementById("crewAge").value;
@@ -311,9 +305,33 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("reviewRole").textContent = document.getElementById("dreamRole").value;
   };
 
+  // Validate current step
+  const validateStep = (stepIndex) => {
+    const step = steps[stepIndex];
+    const inputs = step.querySelectorAll("input");
+    let valid = true;
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        input.classList.add("invalid");
+        valid = false;
+      } else {
+        input.classList.remove("invalid");
+      }
+    });
+
+    return valid;
+  };
+
+  // Initial display
+  showStep(currentStep);
+
   multiForm.addEventListener("click", (e) => {
     if (e.target.classList.contains("next-btn")) {
       e.preventDefault();
+
+      if (!validateStep(currentStep)) return; 
+
       if (currentStep < steps.length - 1) {
         if (currentStep === 1) updateReview();
         currentStep++;
@@ -329,14 +347,28 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
- 
+
+  // Final submit
   multiForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    alert("🎉 Welcome to the Wonka Factory Crew! 🍫");
+
+    // Validate all steps before submitting
+    let allValid = true;
+    steps.forEach((_, i) => {
+      if (!validateStep(i)) allValid = false;
+    });
+
+    if (!allValid) {
+      alert("Please fill all fields correctly before submitting!");
+      return;
+    }
+
+    alert("Welcome to the Wonka Factory Crew! 🎉");
     multiForm.reset();
     currentStep = 0;
     showStep(currentStep);
   });
+
 
   // Greeting message
   const greetingEl = document.getElementById("greetingMessage");
@@ -360,6 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //Real time search
   const searchInput = document.getElementById("wonkaSearch");
   const figures = document.querySelectorAll(".gallery figure");
+
 
   searchInput.addEventListener("keyup", function() {
     const value = searchInput.value.toLowerCase().trim();
@@ -393,7 +426,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Когда кликаем на подсказку — заполняем поле и фильтруем FAQ
     $(document).on("click", "#suggestions li", function () {
       const text = $(this).text();
       $("#faqSearch").val(text);
@@ -405,7 +437,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // При вводе — фильтруем FAQ в реальном времени
     $("#faqSearch").on("input", function () {
       const val = $(this).val().toLowerCase();
       $(".faq-item").each(function () {
@@ -498,22 +529,17 @@ document.addEventListener("DOMContentLoaded", () => {
       document.execCommand('copy');
       temp.remove();
 
-      // Trigger a custom copy event
       $(this).trigger('copy');
     });
 
-    // When copy event happens
     $('.copy-btn').on('copy', function () {
       const btn = $(this);
       const originalText = btn.text();
 
-      // Change button text
       btn.text('✓ Copied');
 
-      // Show tooltip
       tooltip.addClass('show');
 
-      // Restore button and hide tooltip
       setTimeout(() => {
         btn.text(originalText);
         tooltip.removeClass('show');
@@ -526,12 +552,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function lazyLoadImages() {
     $(".lazy-img").each(function () {
       const img = $(this);
-      if (img.attr("src")) return; // уже загружена
+      if (img.attr("src")) return;
 
       const windowBottom = $(window).scrollTop() + $(window).height();
       const imgTop = img.offset().top;
 
-      // Когда картинка появляется в зоне видимости
       if (windowBottom > imgTop - 100) {
         const realSrc = img.attr("data-src");
         img.attr("src", realSrc);
@@ -540,11 +565,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // При загрузке и при прокрутке
   $(window).on("scroll", lazyLoadImages);
   lazyLoadImages();
 
-  //Functional Buttons ===
+
   const modal = $('#productModal');
   const modalTitle = $('#modalTitle');
   const modalDescription = $('#modalDescription');
@@ -600,19 +624,22 @@ document.addEventListener("DOMContentLoaded", () => {
   //Light/Night Mode 
   const themeToggle = document.getElementById("themeToggle");
 
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.checked = true;
   }
 
-  themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-      localStorage.setItem("theme", "dark");
-    } else {
+  // Switch theme on click
+  themeToggle.addEventListener("change", () => {
+    document.body.classList.toggle("light-mode");
+    
+    if (document.body.classList.contains("light-mode")) {
       localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
     }
   });
+
 
   // Audio
   const clickSound = new Audio("cartoon-button-click-sound.mp3");
@@ -626,6 +653,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  
+  // Only declare variables once
+  const sidebarEl = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("sidebarToggle");
+
+  if (sidebarEl && toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      sidebarEl.classList.toggle("active");
+    });
+  }
 
 });

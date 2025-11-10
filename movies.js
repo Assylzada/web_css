@@ -2,7 +2,6 @@ $(document).ready(function() {
   console.log("jQuery is ready!");
 });
 document.addEventListener("DOMContentLoaded", () => {
-  // Validation
   const form = document.getElementById("subscribeForm");
   const email = document.getElementById("email");
   const password = document.getElementById("password");
@@ -33,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  //Accordion
   const faqQuestions = document.querySelectorAll(".faq-question");
 
   faqQuestions.forEach(q => {
@@ -43,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  //Popup + Form Validation
+  //Popup
   const openPopup = document.getElementById("openPopup");
   const closePopup = document.getElementById("closePopup");
   const popupForm = document.getElementById("popupForm");
@@ -102,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Change Background Color
   const colorBtn = document.getElementById("colorBtn");
-  const colors = ["#967BB6", "#ffb6c1", "#ffd580", "#b3ecff", "#c6ffb3", "#fff0b3", "#e6b3ff"];
+  const colors = ["#967BB6", "#ffb6c1", "#ffd580", "#b3ecff", "#c6ffb3", "#fff0b3", "#e6b3ff", "#402352"];
   let i = 0;
 
   if (colorBtn) {
@@ -112,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
+  //Star Rating System
   const stars = document.querySelectorAll(".star-rating .star");
   const ratingResult = document.getElementById("ratingResult");
 
@@ -121,10 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
       star.addEventListener("click", () => {
         const value = parseInt(star.getAttribute("data-value"));
 
-        // Сбрасываем выделение
         stars.forEach(s => s.classList.remove("selected"));
 
-        // Подсвечиваем выбранные звезды
         for (let i = 0; i < value; i++) {
           stars[i].classList.add("selected");
         }
@@ -134,22 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Dynamic Text Change using textContent and innerHTML
-  const messageBtn = document.getElementById("messageBtn");
-  const wonkaMessage = document.getElementById("wonkaMessage");
-
-  if (messageBtn && wonkaMessage) {
-    messageBtn.addEventListener("click", () => {
-      // changing text with textContent
-      wonkaMessage.textContent = "✨ You’ve unlocked Willy Wonka’s golden message! ✨";
-
-      setTimeout(() => {
-        wonkaMessage.innerHTML = "Keep dreaming, chocolate lover 🍫";
-      }, 3000);
-    });
-  }
-
-  // Show Current Time using new Date().toLocaleTimeString()
   const showTimeBtn = document.getElementById("showTimeBtn");
   const timeDisplay = document.getElementById("timeDisplay");
 
@@ -160,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    
     const navItems = document.querySelectorAll(".nav-item");
     let currentIndex = 0;
 
@@ -182,12 +161,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-  
   const steps = document.querySelectorAll(".form-step");
   const nextBtns = document.querySelectorAll(".nextBtn");
   const backBtns = document.querySelectorAll(".backBtn");
   const multiForm = document.getElementById("wonkaForm");
   let currentStep = 0;
+
 
   function showStep(stepIndex) {
     steps.forEach((step, index) => {
@@ -195,11 +174,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function validateStep(stepIndex) {
+    const step = steps[stepIndex];
+    const inputs = step.querySelectorAll("input, textarea");
+    let valid = true;
+
+    inputs.forEach(input => {
+      const warning = input.nextElementSibling;
+      if (warning && warning.classList.contains("warning")) warning.remove();
+
+      if (!input.value.trim()) {
+        input.classList.add("invalid");
+
+        const msg = document.createElement("div");
+        msg.classList.add("warning");
+        msg.style.color = "white";
+        msg.textContent = "This field is required!";
+        input.after(msg);
+
+        valid = false;
+      } else {
+        input.classList.remove("invalid");
+      }
+    });
+
+    return valid;
+  }
+
   nextBtns.forEach(btn => {
     btn.addEventListener("click", () => {
-      if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
+      if (validateStep(currentStep)) {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        }
       }
     });
   });
@@ -214,6 +222,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   multiForm.addEventListener("submit", (e) => {
+    if (!validateStep(currentStep)) {
+      e.preventDefault();
+      return;
+    }
     e.preventDefault();
     alert("Your Golden Ticket request has been submitted!");
     multiForm.reset();
@@ -221,8 +233,6 @@ document.addEventListener("DOMContentLoaded", () => {
     showStep(currentStep);
   });
 
-
-  
   const greetingEl = document.getElementById("greetingMessage");
   if (!greetingEl) return;
 
@@ -239,24 +249,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   greetingEl.textContent = greetingText;
 
-  
   $("#gallerySearch").on("keyup", function() {
-    let value = $(this).val().toLowerCase();
+  let value = $(this).val().toLowerCase();
 
-    $(".gallery-item").filter(function() {
-      $(this).toggle(
-        $(this).text().toLowerCase().includes(value) ||
-        $(this).find("img").attr("alt").toLowerCase().includes(value)
-      );
-    });
+  $(".gallery-item").each(function() {
+    let match =
+      $(this).text().toLowerCase().includes(value) ||
+      $(this).find("img").attr("alt").toLowerCase().includes(value);
+
+    if (match) {
+      $(this).css({
+        visibility: "visible",
+        opacity: 1,
+        transform: "scale(1)"
+      });
+    } else {
+      $(this).css({
+        visibility: "hidden",
+        opacity: 0,
+        transform: "scale(0)"
+      });
+    }
   });
+});
 
   const questions = [];
   $(".faq-question").each(function () {
     questions.push($(this).text());
   });
 
-  
   $("#faqSearch").on("keyup", function () {
     const query = $(this).val().toLowerCase();
     $("#suggestions").empty();
@@ -276,7 +297,6 @@ document.addEventListener("DOMContentLoaded", () => {
     highlightMatches(query);
   });
 
-  
   $(document).on("click", "#suggestions li", function () {
     const text = $(this).text();
     $("#faqSearch").val(text);
@@ -286,7 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
     highlightMatches(text.toLowerCase());
   });
 
-  
   function filterFAQ(query) {
     $(".faq-item").each(function () {
       const q = $(this).find(".faq-question").text().toLowerCase();
@@ -295,7 +314,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
   function highlightMatches(query) {
     removeHighlights();
     if (!query) return;
@@ -309,14 +327,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
- 
   function removeHighlights() {
     $(".highlight").each(function () {
       $(this).replaceWith($(this).text());
     });
   }
 
-  
   document.addEventListener("scroll", function() {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -325,17 +341,25 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  
+  //Light/Night Mode Toggle
   const themeToggle = document.getElementById("themeToggle");
-  if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      themeToggle.textContent = 
-        document.body.classList.contains("dark-mode") ? "🌙 Night Mode" : "☀️ Light Mode";
-    });
+
+  if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.checked = true;
   }
 
-  
+  themeToggle.addEventListener("change", () => {
+    document.body.classList.toggle("light-mode");
+    
+    if (document.body.classList.contains("light-mode")) {
+      localStorage.setItem("theme", "light");
+    } else {
+      localStorage.setItem("theme", "dark");
+    }
+  });
+
+
   const modal = document.getElementById("movieModal");
   const modalTitle = document.getElementById("modalTitle");
   const modalText = document.getElementById("modalText");
@@ -365,19 +389,59 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-
   const clickSound = new Audio("cartoon-button-click-sound.mp3");
-  clickSound.volume = 0.4; // громкость от 0 до 1
-
- 
+  clickSound.volume = 0.4;
   document.querySelectorAll("button").forEach(btn => {
     btn.addEventListener("click", () => {
-      // Перематываем, чтобы звук всегда играл с начала
       clickSound.currentTime = 0;
       clickSound.play();
     });
   });
 
+  //OMDb API Integration
+  const apiKey = "d599b33";
 
+  const searchContainer = document.getElementById("movie-search-section");
+
+  const searchForm = document.createElement("form");
+  searchForm.classList.add("movie-search");
+  searchForm.innerHTML = `
+    <input type="text" id="movieInput" placeholder="Search for a movie..." />
+    <button type="submit">Search</button>
+  `;
+
+
+  const movieResults = document.createElement("div");
+  movieResults.classList.add("movie-results");
+
+  searchContainer.appendChild(searchForm);
+  searchContainer.appendChild(movieResults);
+
+  searchForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const query = document.getElementById("movieInput").value.trim();
+    if (!query) return;
+
+    movieResults.innerHTML = "<p>Loading...</p>";
+
+    try {
+      const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&s=${encodeURIComponent(query)}`);
+      const data = await response.json();
+
+      if (data.Response === "False") {
+        movieResults.innerHTML = `<p>No movies found for "${query}".</p>`;
+        return;
+      }
+
+      movieResults.innerHTML = data.Search.map(movie => `
+        <div class="movie-card">
+          <img src="${movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150"}" alt="${movie.Title}">
+          <h3>${movie.Title}</h3>
+          <p>${movie.Year}</p>
+        </div>
+      `).join("");
+    } catch (err) {
+      movieResults.innerHTML = `<p style="color:red;">Error: ${err.message}</p>`;
+    }
+  });
 });
-

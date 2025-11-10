@@ -27,23 +27,21 @@
       <a href="movies.html" class="nav-item nav-link">Movies</a>
     </nav>
 
+    <button id="sidebarToggle" class="sidebar-toggle">☰</button>
+
   </header>
 
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <h2>Quick Access</h2>
 
-    <!-- Subscribe Button (Task 3 trigger) -->
+    <!-- Subscribe Button-->
     <div style="margin-top:20px;">
       <button id="openSubscribe" class="nav item btn">Subscribe for Sweet Updates</button>
     </div>
 
     <div style="margin-top:16px;">
       <button id="changeBgBtn" class="nav item btn">Change Factory Mood 🌈</button>
-    </div>
-
-    <div style="margin-top:20px;">
-      <button id="themeToggle" class="nav item btn">🌞 Light  / 🌙 Dark</button>
     </div>
 
     <div class="time-box">
@@ -61,6 +59,12 @@
 
   <!-- Main Content -->
   <main class="main">
+
+    <div class="theme-toggle">
+      <input type="checkbox" id="themeToggle">
+      <label for="themeToggle" class="toggle-label">
+      </label>
+    </div>
 
     <!-- Who is Willy Wonka -->
     <div class="about-box">
@@ -100,7 +104,7 @@
         <img src="https://static.vecteezy.com/system/resources/previews/046/542/639/non_2x/a-pile-of-colorful-candies-on-a-transparent-background-free-png.png" alt="Candy Image">
         <h3>Everlasting Gobstopper</h3>
         <p>A candy that never runs out of flavor!</p>
-        <button class="btn">Learn More</button>
+        <button class="btn card-btn">Learn More</button>
         <button class="btn copy-btn">Copy</button>
       </div>
 
@@ -108,7 +112,7 @@
         <img src="https://static.vecteezy.com/system/resources/previews/059/022/002/non_2x/delicious-melted-chocolate-bar-with-nuts-and-splash-sweet-treat-photography-free-png.png" alt="Chocolate River">
         <h3>Chocolate River</h3>
         <p>Delicious flowing streams of pure chocolate.</p>
-        <button class="btn">Explore</button>
+        <button class="btn card-btn">Explore</button>
         <button class="btn copy-btn">Copy</button>
       </div>
 
@@ -116,7 +120,7 @@
         <img src="https://static.vecteezy.com/system/resources/previews/069/588/450/non_2x/colorful-summer-drinks-free-png.png" alt="Fizzy Drinks">
         <h3>Fizzy Lifting Drinks</h3>
         <p>A magical drink that makes you float!</p>
-        <button class="btn">Try It</button>
+        <button class="btn card-btn">Try It</button>
         <button class="btn copy-btn">Copy</button>
       </div>
     </div>
@@ -157,12 +161,11 @@
         <p>The chocolate river in the 1971 film was actually made from water, chocolate powder, and cream — and it spoiled fast!</p>
       </div>
 
-      <button id="factButton" class="btn">Get New Fact </button>
+      <button id="factButton" class="btn fact-btn">Get New Fact </button>
     </div>
     </div>
 
-
-    <!-- FAQ -->
+    <!-- FAQ section-->
      
     <div class="about-box">
       <div class="faq-search">
@@ -209,7 +212,7 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="5" placeholder="Write your sweetest thought..."></textarea>
 
-        <button class="btn" type="submit">Send Golden Ticket</button>
+        <button class="btn form-btn" type="submit">Send Golden Ticket</button>
       </form>
     </div>
 
@@ -255,7 +258,7 @@
           
           <div class="form-navigation">
             <button type="button" class="btn back-btn">Back</button>
-            <button type="submit" class="btn">Submit</button>
+            <button type="submit" class="btn submit-btn">Submit</button>
           </div>
         </div>
       </form>
@@ -297,7 +300,6 @@
   </div>
 </div>
 
-<!--Script Connection -->
 <div id="productModal" class="popup-overlay hidden">
   <div class="popup">
     <h2 id="modalTitle"></h2>
@@ -306,6 +308,7 @@
   </div>
 </div>
 
+<!--Script Connection -->
 <script src="script3.js" ></script>
 <div id="copy-tooltip">Copied to clipboard!</div>
 </body>

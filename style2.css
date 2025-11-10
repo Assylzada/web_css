@@ -47,6 +47,11 @@
       animation: twinkle 6s infinite alternate;
       transition: background 0.5s;
     }
+    #userName {
+      color: var(--gold);
+      font-weight: bold;
+      text-shadow: 0 0 6px rgba(245, 231, 122, 0.6);
+    }
 
     #datetime {
       font-size: 22px;
@@ -761,7 +766,7 @@
 
     /* Optional: subtle UI element styling for better harmony */
     .light-mode a {
-      color: var(--choco-light);
+      color: var(--cream);
       text-decoration: none;
     }
     .light-mode a:hover {
@@ -810,6 +815,10 @@
       filter: brightness(1.1);
     }
 
+    body.light-mode #shopSearch::placeholder {
+      color: black;
+    }
+
     /* Default (dark mode) */
     .card h3 {
       color: var(--cream); /* light text on dark cards */
@@ -819,6 +828,11 @@
     /* Light mode override */
     body.light-mode .card h3 {
       color: var(--choco-dark); /* deep violet for readability */
+    }
+
+    body.light-mode #userName {
+      color: #6a0909;
+      text-shadow: none;
     }
 
     .quote {
@@ -1009,6 +1023,221 @@
       font-weight: 500;
       letter-spacing: 1px;
     }
+
+    /* Fixed iPhone-style toggle in top-right corner */
+    .theme-switch-wrapper {
+      position: fixed;      /* stay in place */
+      top: 20px;            /* distance from top */
+      right: 20px;          /* distance from right */
+      z-index: 9999;        /* above all content */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.2); /* optional soft glow */
+      padding: 6px 8px;
+      border-radius: 20px;  /* circular pill shape */
+      backdrop-filter: blur(9px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+
+    .theme-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc; /* default track */
+      transition: 0.4s;
+      border-radius: 34px;
+    }
+
+    .slider::before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Checked state */
+    input:checked + .slider {
+      background-color: #a974ff; /* active track */
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(24px); /* move the circle */
+    }
+
+    /* --- Container2 / Form (Light Mode) --- */
+    body.light-mode .container2 {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--choco-dark);
+      border-radius: var(--radius);
+      padding: 40px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode .container2 h2 {
+      color: var(--choco-light);
+    }
+
+    body.light-mode input,
+    body.light-mode select,
+    body.light-mode button {
+      background: rgba(245, 245, 245, 0.9);
+      color: var(--choco-dark);
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+
+    body.light-mode input:focus,
+    body.light-mode select:focus,
+    body.light-mode button:focus {
+      border-color: var(--choco-light);
+      box-shadow: 0 0 12px rgba(162, 116, 255, 0.3);
+    }
+
+    /* --- Buttons --- */
+    body.light-mode button {
+      background: linear-gradient(90deg, var(--gold), var(--choco-light));
+      color: var(--choco-dark);
+      box-shadow: 0 0 12px rgba(245, 231, 122, 0.4), 0 0 20px rgba(162, 116, 255, 0.3);
+    }
+
+    body.light-mode button:hover {
+      background: linear-gradient(90deg, var(--choco-light), var(--gold));
+      transform: translateY(-2px);
+    }
+
+    /* --- Success Message --- */
+    body.light-mode #successMsg {
+      color: var(--choco-dark);
+      background: rgba(245, 231, 122, 0.2);
+      border: 1px solid var(--gold);
+      padding: 12px;
+      border-radius: var(--radius);
+      box-shadow: 0 0 10px rgba(245, 231, 122, 0.3);
+    }
+
+    /* --- Popup (Light Mode) --- */
+    body.light-mode .popup-content {
+      background: #fff;
+      color: var(--choco-dark);
+      border-radius: var(--radius);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode .popup-content button {
+      background: linear-gradient(90deg, var(--gold), var(--choco-light));
+      color: var(--choco-dark);
+    }
+
+    /* --- Accordion --- */
+    body.light-mode .accordion {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--choco-dark);
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    body.light-mode .accordion .question {
+      background: linear-gradient(90deg, #f5f5f5, #c06fe3ac);
+      color: var(--choco-dark);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    body.light-mode .accordion .question:hover {
+      background: linear-gradient(90deg, var(--choco-light), var(--gold));
+      color: var(--choco-dark);
+    }
+
+    body.light-mode .accordion .answer {
+      background: rgba(245, 245, 245, 0.9);
+      color: var(--choco-dark);
+    }
+
+    /* --- Wonka Interactive Section --- */
+    body.light-mode .wonka-section {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--choco-dark);
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 0 25px rgba(0,0,0,0.1);
+    }
+
+    body.light-mode .wonka-section h2 {
+      color: var(--choco-dark);
+    }
+
+    body.light-mode .stars .star {
+      color: #ccc;
+    }
+
+    body.light-mode .stars .star.active,
+    body.light-mode .stars .star:hover {
+      color: var(--gold);
+    }
+
+    /* --- Product Cards --- */
+    body.light-mode .shop .product-card {
+      background: rgba(245, 245, 245, 0.9);
+      border: 1px solid rgba(0,0,0,0.1);
+      color: var(--choco-dark);
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+
+    body.light-mode .shop .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    body.light-mode .shop .product-card h3 {
+      color: var(--choco-dark);
+    }
+
+    /* --- Filter Dropdown --- */
+    body.light-mode .filter-area select {
+      background: #fff;
+      color: var(--choco-dark);
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+
+    /* --- Quote --- */
+    body.light-mode .quote {
+      color: var(--choco-dark);
+      opacity: 0.85;
+    }
+    body.light-mode label {
+      color: var(--choco-dark);
+    }
+
+    /* --- Smooth transitions for all elements --- */
+    body.light-mode *,
+    body.light-mode *::before,
+    body.light-mode *::after {
+      transition: all 0.4s ease;
+    }
+
 
     /* 🪄 Smooth entry animation */
     @keyframes bounceIn {

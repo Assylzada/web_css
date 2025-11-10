@@ -204,14 +204,33 @@ loadMoreBtn.addEventListener("click", () => {
 renderProducts(displayedProducts);
 
 
-// 🌞 2. Theme Toggle
-const toggleBtn = document.querySelector('#themeToggle');
-toggleBtn.addEventListener('click', () => {
+
+const themeToggle = document.getElementById('themeToggle');
+
+// Default: dark mode
+document.body.classList.remove('light-mode'); // ensure dark mode first
+
+// Load saved theme on page load
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-mode');
+  themeToggle.checked = true;
+} else {
+  // Default dark mode
+  localStorage.setItem('theme', 'dark');
+  themeToggle.checked = false;
+}
+
+// Toggle theme on switch
+themeToggle.addEventListener('change', () => {
   document.body.classList.toggle('light-mode');
-  toggleBtn.textContent = document.body.classList.contains('light-mode')
-    ? '🌙 Switch to Night'
-    : '🌞 Switch to Day';
+
+  if (document.body.classList.contains('light-mode')) {
+    localStorage.setItem('theme', 'light');
+  } else {
+    localStorage.setItem('theme', 'dark');
+  }
 });
+
 
 
 // 🎹 Keyboard navigation for nav menu
@@ -423,21 +442,6 @@ $(document).ready(function () {
     }, 1800);
   });
 
-  /* ------------------------------------
-     🔔 6. Toast Notification System
-  ------------------------------------ */
-  function showToast(message) {
-    const toast = $(`<div class="toast">${message}</div>`);
-    $("body").append(toast);
-    setTimeout(() => toast.addClass("show"), 100);
-    setTimeout(() => toast.removeClass("show"), 3000);
-    setTimeout(() => toast.remove(), 3500);
-  }
-
-  $(".btn-primary").on("click", function (e) {
-    e.preventDefault();
-    showToast("🍬 Item added to cart!");
-  });
 
   /* ------------------------------------
      📋 7. Copy to Clipboard Button
@@ -476,3 +480,80 @@ $(document).ready(function () {
   $(window).on("scroll", lazyLoad);
   lazyLoad();
 });
+
+// 🔔 Toast Notification Function
+function showToast(message) {
+  const toast = $(`<div class="toast">${message}</div>`);
+  $("body").append(toast);
+  setTimeout(() => toast.addClass("show"), 100);
+  setTimeout(() => toast.removeClass("show"), 3000);
+  setTimeout(() => toast.remove(), 3500);
+}
+
+// 🛒 Initialize cart from localStorage
+let cart = JSON.parse(localStorage.getItem("wonkaCart")) || [];
+
+// 💾 Save cart
+function saveCart() {
+  localStorage.setItem("wonkaCart", JSON.stringify(cart));
+}
+
+// 🧺 Render cart visually
+function renderCart() {
+  const cartItems = document.getElementById("cartItems");
+  cartItems.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = "<p>Your cart is empty 🍭</p>";
+    return;
+  }
+
+  cart.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <img src="${item.img}" alt="${item.name}" class="cart-img">
+      <div class="cart-info">
+        <span class="cart-name">${item.name}</span>
+      </div>
+      <button class="remove-btn" data-index="${index}">❌</button>
+    `;
+    cartItems.appendChild(div);
+  });
+
+  // ❌ Remove item
+  document.querySelectorAll(".remove-btn").forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      const i = e.target.getAttribute("data-index");
+      cart.splice(i, 1);
+      saveCart();
+      renderCart();
+      showToast("🗑️ Item removed!");
+    })
+  );
+}
+
+// ➕ Add to Cart
+$(".btn-primary").on("click", function (e) {
+  e.preventDefault();
+  const card = $(this).closest(".card");
+  const name = card.find("h3").text().trim();
+  const img = card.find("img").attr("src");
+  const item = { name, img };
+
+  cart.push(item);
+  saveCart();
+  renderCart();
+  showToast(`🍫 ${name} added to cart!`);
+});
+
+// 🧹 Clear Cart
+document.getElementById("clearCart").addEventListener("click", () => {
+  cart = [];
+  saveCart();
+  renderCart();
+  showToast("🧹 Cart cleared!");
+});
+
+// 🚀 On load
+renderCart();
