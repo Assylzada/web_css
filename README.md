@@ -90,6 +90,7 @@ This project demonstrates various web concepts such as responsive design, DOM ma
 ## Credits
 - **Content Inspiration**: Roald Dahl’s *Charlie and the Chocolate Factory* series.
 - **Author**: Assylay Shukirbay, Assylzada Nurbayeva
+- **Group**: SE-2406
 - **Year**: 2025
 - **Course**: WEB Technologies 1
 - **Technologies Used**: HTML5, CSS3, JavaScript, jQuery, Responsive Design.
@@ -97,6 +98,6 @@ This project demonstrates various web concepts such as responsive design, DOM ma
 ---
 
 ## License
-This project is created for educational and demonstration purposes only. All content and images are inspired by Roald Dahl's works.
+This project is created for educational and demonstration purposes only.
 
 ---
